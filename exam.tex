@@ -1,0 +1,360 @@
+\documentclass[addpoints,spanish, 12pt,a4paper]{exam}
+% Hasta donde pone \begin{document} es lo que se conoce como preámbulo (preamble)
+
+%% Esto es de la clase exam. Si dejamos sin comentar \printanswers, se mostraran las soluciones. 
+%% Si la comentamos y dejamos sin comentar \noprintanswers, pues no se muestran las soluciones.
+\printanswers
+%\noprintanswers
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Idioma y codificación de texto
+\PassOptionsToPackage{T1}{fontenc} 
+\usepackage{fontenc} 
+\usepackage[utf8]{inputenc}
+% Cargar babel y configurar para español
+\usepackage[spanish,es-lcroman, es-tabla, es-noshorthands]{babel}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\usepackage{mathptmx}
+\usepackage{amsmath}
+\usepackage{mathptmx}% http://ctan.org/pkg/mathptmx
+%\usepackage[osf,sc]{mathpazo}
+\usepackage[scaled=0.9]{helvet}
+\renewcommand{\familydefault}{\sfdefault}
+
+
+\usepackage{graphicx}
+%\usepackage[colorinlistoftodos]{todonotes}
+%\usepackage[colorlinks=true, allcolors=blue]{hyperref}
+
+%\renewcommand{\sfdefault}{phv}
+
+%%%%%%% Paquetes varios y alguna opción
+\usepackage{graphicx} % Paquete necesario para incluir imágenes, cambiarles el tamaño, etc.
+\usepackage{enumitem} % Para poder configurar las listas
+\everymath{\displaystyle} % Esto es para que las expresiones se vean... grandes, que resulta diferente de si las queremos entre líneas.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%% Cosas a configurar de la clase EXAM %%%%
+
+\author{David De Sancho}
+\pagestyle{headandfoot}
+\runningheadrule
+\extraheadheight{3cm}
+\firstpageheader{}
+    {\hspace*{10cm}\includegraphics[height=2cm]{figs/logotipo_upv_ehu.jpg}\\ 
+    \textbf{Química Física II}\\
+    Examen de los Temas 1 al 4\\
+    20 de Noviembre de 2018
+    }
+{}
+
+\runningheader{\small Química Física II, 1$^\mathrm{er}$ parcial}{}
+{\small 20 de Noviembre, 2018}
+\runningfooter{}{{\tiny  }}{Página \thepage\ de \numpages}
+\pointpoints{punto}{puntos}
+\bonuspointpoints{punto extra}{puntos extra}
+\hqword{Pregunta}
+\hpword{Puntos}
+\hsword{Calificación}
+\renewcommand{\solutiontitle}{\noindent\textbf{Solución:}\par\noindent}
+\pointformat{(\emph{\thepoints})}
+\bonuspointformat{(\emph{\thepoints})}
+\pointsinrightmargin % Para poner las puntuaciones a la derecha. Se puede cambiar. Si se comenta, sale a la izquierda.
+\extrawidth{-3cm} %Un poquito más de margen por si ponemos textos largos.
+\marginpointname{ \emph{\points}}
+%\bracketedpoints
+
+%%%%%%%%%%%%%%%%%%%%%% FIN DEL PREÁMBULO %%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+\vspace{0.1in} %espacio vertical
+\makebox[\textwidth]{Nombre:\enspace\hrulefill}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Tabla para anotar la calificación
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{center}
+    %\resizebox{\textwidth}{!}{\gradetable[h][questions]} % Esto es por si la tabla sale muy grande, para ajustarla al ancho
+    \gradetable[h][questions]
+\end{center}
+\vspace{0.1in} % Espacio vertical
+
+
+\begin{questions} % Comenzamos con las preguntas del examen
+% Entre corchetes se pone la puntuación de cada una
+
+    %Pregunta con apartados
+    \question[1] Para resolver la denominada "catástrofe
+    ultravioleta", Max Planck introduce por primera vez 
+    la idea de la cuantización. La expresión resultante
+    para la densidad de estados para una longitud de onda
+    $\lambda$ es  
+    \begin{equation*}
+        \rho=\frac{8\pi hc}{\lambda^5(\mathrm{e}^{hc/\lambda k_BT}-1)}\
+    \end{equation*}
+    Demuestra que la distribución de Planck se reduce 
+    a la ley de Rayleigh-Jeans, 
+    $\rho=8\pi k_BT/\lambda^4$, 
+    para valores elevados de $\lambda$.
+    
+    \begin{solution}
+    \fontfamily{ptm}\selectfont
+
+    A medida que $\lambda$ aumenta, el exponente
+    $hc/\lambda k_BT$ decrece y a longitudes de 
+    onda muy pequeñas, $hc/\lambda k_BT\ll 1$. 
+    Definiendo $x=hc/\lambda k_BT$ podemos hacer 
+    una expansión en serie de Taylor del término $\mathrm{e}^x$
+    \begin{equation*}
+        \mathrm{e}^x= 1 + x + \frac{1}{2!}x^2+...
+    \end{equation*}
+    Para $x\ll1$ podemos aproximar $\mathrm{e}^x= 1 + x$
+    y por tanto obtenemos 
+     \begin{align*}
+        \lim_{\lambda\rightarrow\infty} \rho =&
+        \frac{8\pi hc}{\lambda^5(1+x-1)} = 
+         \frac{8\pi hc}{\lambda^5x}=
+         \frac{8\pi hc}{\lambda^5}\frac{1}{hc/\lambda k_BT} \\
+         = &\frac{8\pi k_BT}{\lambda^4}
+    \end{align*}
+    \vspace*{10\baselineskip}
+    \end{solution}
+    
+   % \question Calcula:
+   %     \begin{parts}
+   %         \part[1] $2+2=$
+   %         \part[2] $\frac{1}{2}+\frac{3}{4}=$ 
+   %     \end{parts}
+   % \begin{solution} % Aquí ponemos la solución, es opcional.
+   %     \begin{parts}
+   %         \part $4$
+   %         \part $\frac{5}{4}$ 
+   %     \end{parts}
+   % \end{solution}
+    
+    \question[1] La función trabajo (\textit{work function})
+    del cesio metálico es 2.14 eV. Calcula la energía 
+    cinética y la velocidad de los electrones liberados
+    por la luz de longitud de onda (a) 700 nm y (b) 300 nm.
+    Interpreta el resultado.
+    
+    \begin{solution}
+        \fontfamily{ptm}\selectfont
+
+        La conservación de la energía impone que la
+        energía del fotón se distribuya entre la energía
+        necesaria para la ionización y la energía cinética
+        con la que son liberados los electrones,
+        \begin{equation*}
+            E=\Phi + E_K
+        \end{equation*}
+        La energía del fotón se puede escribir como
+        $E=h\nu=hc/\lambda$, de modo que la energía 
+        cinética resultante es $E_K=hc/\lambda - \Phi$.
+        Asímismo, como la energía cinética es 
+        $E_K=1/2m_ev^2$, la velocidad es $v=(2E_K/m_e)^{1/2}$.
+        
+        \begin{align*}
+            E_K =&\frac{(6.626\times10^{-34}\textrm{J s})
+            \cdot (3\times10^8\textrm{m s}^{-1})}{700\times 10^{-9}\mathrm{m}}& - \\ &-2.09\textrm{ eV}\cdot1.6\times 10^{-19} \textrm{J eV}^{-1}=\\
+            =&-5.04 J
+        \end{align*}
+        Este valor de la energía es negativo, debido a que
+        la longitud de la radiación incidente es demasiado
+        larga como para ionizar el cesio.
+        \begin{align*}
+            E_K =&\frac{(6.626\times10^{-34}\textrm{J s})
+            \cdot (3\times10^8\textrm{m s}^{-1})}{195\times 10^{-9}\mathrm{m}}& - \\&-2.09\textrm{ eV}\cdot1.6\times 10^{-19} \textrm{J eV}^{-1}=\\
+            =& 3.28\times10^{-19} \mathrm{J}
+        \end{align*}
+        A partir de la energía podemos obtener la velocidad,
+        \begin{equation*}
+            v=\frac{2\cdot3.28\times10^{-19} \mathrm{J}}{9.11\times10^{-31}\mathrm{kg}}=848838\mathrm{~ m s}^{-1}
+        \end{equation*}
+    \vspace*{5\baselineskip}
+    \end{solution}
+    
+    \question[1\half] Uno de los postulados de la Mecánica
+    Cuántica establece que el valor 
+    del observable $\Omega$ en una serie de medidas es 
+    igual al valor promedio (\textit{expectation value})
+    del operador. Si nuestra función de onda $\psi$ no
+    es función propia del operador, pero se puede expresar
+    como una combinación lineal de dos funciones propias 
+    de $\hat{\Omega}$, $\psi_1$ y $\psi_2$, para las que se
+    cumple $\hat{\Omega}\psi_1=\omega_1\psi_1$ y
+    $\hat{\Omega}\psi_2=\omega_2\psi_2$. Si disponemos
+    de un dispositivo experimental que nos permite medir
+    el observable $\Omega$: (a) ¿Cuál será el resultado de
+    cada medida individual? (b) ¿Cuál será el "expectation
+    value"?
+    
+    \begin{solution}
+        \fontfamily{ptm}\selectfont
+    Cuando se realiza una medida, se obtendrá el valor 
+    propio $\omega_1$ o $\omega_2$ correspondiente a una
+    de las funciones propias $\psi_1$ o $\psi_2$, 
+    respectivamente. La probabilidad de encontrar 
+    cada una de las soluciones es proporcional
+    al cuadrado del módulo del coeficiente $|c_1|^2$ 
+    o $|c_2|^2$ dentro de la combinación lineal. 
+    El promedio tras un gran número observaciones lo 
+    da el valor esperado, $\langle\Omega\rangle$:
+    \begin{align*}
+    \langle\Omega\rangle  =& 
+\int (c_1\psi_1 + c_2\psi_2)^\star
+\hat{\Omega}(c_1\psi_1 + c_2\psi_2)d\tau = \\
+=&\int (c_1\psi_1 + c_2\psi_2)^\star
+(c_1\hat{\Omega}\psi_1 + c_2\hat{\Omega}\psi_2)d\tau = \\
+=&\int c_1^\star c_1\psi_1^\star\hat{\Omega}\psi_1 d\tau + 
+\int c_2^\star c_2\psi_2^\star\hat{\Omega}\psi_2 d\tau +\\ +&\int c_1^\star c_2\psi_1^\star\hat{\Omega}\psi_2 d\tau + 
+\int c_2^\star c_1\psi_2^\star\hat{\Omega}\psi_1 d\tau = \\
+=& \int c_1^\star c_1\omega_1\psi_1^\star\psi_1 d\tau + 
+\int c_2^\star c_2\omega_2\psi_2^\star\psi_2 d\tau + \\
++&\int c_1^\star c_2\omega_2\psi_1^\star\psi_2 d\tau + 
+\int c_2^\star c_1\omega_1\psi_2^\star\psi_1 d\tau 
+    \end{align*}
+    Los términos cruzados se cancelan, y por tanto 
+    obtenemos el siguiente "expectation value":
+    \begin{equation*}
+    \langle\Omega\rangle = |c_1|^2w_1 + |c_2|^2w_2
+    \end{equation*}
+    \vspace*{5\baselineskip}
+    \end{solution}
+    
+    \question[1\half] El principio de incertidumbre
+    en su versión más general relaciona el error en 
+    la medida de dos operadores,
+    $\Delta\Omega_1\Delta\Omega_2$,
+    con el valor del conmutador
+    $[\hat{\Omega}_1,\hat{\Omega}_2]$. Supongamos
+    que nos encontramos en el caso de una partícula
+    sometida a un potencial armónico, $V=1/2kx^2$.
+    Demuestra que la incertidumbre asociada a los
+    operadores posición, $\hat{x}$, y hamiltoniano,
+    $\hat{H}_x$, depende de la velocidad de
+    desplazamiento de la partícula y es independiente
+    del potencial.
+
+    \begin{solution}
+    En el caso general, el error en la determinación
+    de dos observables se relaciona con el conmutador
+    a través de 
+    $\Delta\Omega_1\Delta\Omega_2\geq1/2|[\hat{\Omega}_1,\hat{\Omega}_2]|$. Para calcular la incertidumbre 
+    en el caso del hamiltoniano y la posición, obtenemos
+    que 
+    \begin{align*}
+     [\hat{H}_x, \hat{x}] = \bigg[\bigg(\frac{p^3_x}{2m} + 1/2kx^2\bigg)x\psi - x\bigg(\frac{p^2_x}{2m} + 1/2kx^2\bigg)\psi\bigg] = \\
+     \bigg[\frac{p^2_x}{2m}x\psi + 1/2kx^3\psi - x\frac{p^2_x}{2m}\psi - 1/2kx^3\psi\bigg]=\\
+     \bigg[\frac{p^2_x}{2m}x\psi - x\frac{p^2_x}{2m}\psi\bigg] =\\
+     \bigg(\frac{\hbar}{\mathrm{i}}\bigg)^2\frac{1}{2m}
+     \bigg[\frac{\partial^2}{\partial x^2}x\psi\bigg] - x\frac{p^2_x}{2m}\psi=\\
+    \bigg(\frac{\hbar}{\mathrm{i}}\bigg)^2\frac{1}{2m}
+     \bigg[\frac{\partial}{\partial x}\bigg(\psi + x\frac{\partial}{\partial x}\psi\bigg)\bigg] - x\frac{p^2_x}{2m}\psi=\\
+     \bigg(\frac{\hbar}{\mathrm{i}}\bigg)^2\frac{1}{2m}
+     \bigg[\frac{\partial\psi}{\partial x} +
+     \bigg(\frac{\partial\psi}{\partial x} + x\frac{\partial^2\psi}{\partial x^2}\bigg)\bigg] - x\frac{p^2_x}{2m}\psi= \\
+     \bigg(\frac{\hbar}{\mathrm{i}}\bigg)^2\frac{1}{2m}
+     2\frac{\partial\psi}{\partial x} + x\frac{p^2_x}{2m}\psi - x\frac{p^2_x}{2m}\psi = 
+     -\frac{i\hbar}{m}\hat{p}_x\psi 
+    \end{align*}
+    Por tanto el conmutador y la incertidumbre en
+    posición y energía dependen de la velocidad de la
+    partícula, pero no de la constante del potencial
+    armónico.
+        \vspace*{5\baselineskip}
+    \end{solution}
+
+    \question[1\half] En el caso de la partícula en una
+    caja de potencial en una dimensión, nos encontramos
+    con que $V(0)=V(L)=\infty$ y $V(x)=0$ para 
+    $0<x<L$. La solución para este sistema en 
+    la región en la que no hay un potencial externo es
+    \begin{equation*}
+        \psi=A\exp(ikx) + B\exp(-ikx) 
+    \end{equation*}
+    Razone, para este sistema, el valor de la constante
+    de normalización, el origen de la cuantización y la
+    separación entre niveles energéticos.
+    \begin{solution}
+        \vspace*{29\baselineskip}
+    \end{solution}
+    
+    \question[2] Las soluciones del oscilador armónico
+    son de la forma
+    \begin{equation*}
+        \psi_v(x) = N_vH_v(y)\mathrm{e}^{-y^2/2}    
+    \end{equation*}
+    donde $H_v$ son los polinomios de Hermite y 
+    hemos sustituido $y=x/\alpha$ y 
+    $\alpha=(\hbar/mk)^{1/4}$. Explica, valiéndote de un
+    dibujo, cómo se aplica el principio de correspondencia
+    a este sistema.
+    \begin{solution}
+        \vspace*{29\baselineskip}
+    \end{solution}
+    
+    \question[1\half] Los armónicos esféricos son las soluciones
+    de la ecuación de Schrödinger para el movimiento
+    rotacional y dependen de dos, números cuánticos $l$ y 
+    $m$. Prueba que el armónico esférico
+    \begin{equation*}
+        Y_{1,-1}=(3/8\pi)^{1/2}\sin\theta\mathrm{e}^{-i\phi}
+     \end{equation*}
+    está normalizado y es ortogonal a    
+    \begin{equation*}
+        Y_{2,1}=(15/8\pi)^{1/2}\sin\theta\cos\theta\mathrm{e}^{i\phi}
+    \end{equation*}
+    Recuerda que para dos funciones de onda $\psi_i$ y $\psi_j$ al usar coordenadas esféricas podemos 
+    escribir
+    \begin{equation*}
+        \int_\infty^\infty\psi_i^\star\psi_j d\tau=
+    \int_0^\pi \sin\theta d\theta\int_0^{2\pi}d\phi\psi_i^\star\psi_j
+    \end{equation*}
+
+    \begin{solution}
+    \fontfamily{ptm}\selectfont
+    La condición de normalización aplicada al armónico esférico $Y_{1,-1}$
+    \begin{equation*}
+        \int_0^\pi d\theta\sin\theta\int_0^{2\pi}d\phi Y_{1,-1}^{\star}Y_{1,-1}=1
+    \end{equation*}
+    Sustituyendo la expresión para $Y_{1,-1}$ nos 
+    encontramos con
+    \begin{align*}
+        \int_0^\pi d\theta\int_0^{2\pi}d\phi Y_{1,-1}^{\star}Y_{1,-1}&=
+        \frac{3}{8\pi}\int_0^\pi \sin\theta(\sin^2\theta) d\theta\int_0^{2\pi}\mathrm{e}^{i\phi}\mathrm{e}^{-i\phi}d\phi =\\
+        &=\frac{3}{8\pi}2\pi\int_0^\pi \sin\theta(\sin^2\theta) d\theta=\\
+        &=\frac{3}{4}\int_0^\pi \sin\theta(1-\cos^2\theta) d\theta=\\
+       &=\frac{3}{4}\bigg(\int_0^\pi \sin\theta d\theta -\int_0^\pi \sin\theta\cos^2\theta d\theta\bigg)=1
+    \end{align*}
+    De manera que efectivamente el armónico esférico está 
+    normalizado.
+    
+    La condición de ortogonalidad en coordenadas esféricas
+    para $Y_{1,-1}$ y $Y_{2,1}$ es
+    \begin{equation*}
+        \int_0^\pi d\theta\sin\theta\int_0^{2\pi}d\phi Y_{2,1}^{\star}Y_{1,-1}=0
+    \end{equation*}
+    Si desarrollamos esta expresión,
+    \begin{align*}
+        &\int_0^\pi d\theta\sin\theta\int_0^{2\pi}d\phi Y_{2,1}^{\star}Y_{1,-1}=\\
+        &\bigg(\frac{15}{8\pi}\bigg)^{1/2} \bigg(\frac{3}{8\pi}\bigg)^{1/2}
+        \int_0^\pi d\theta\sin\theta
+        \int_0^{2\pi}d\phi
+        (\mathrm{e}^{-i\phi}\sin\theta\cos\theta)(\mathrm{e}^{-i\phi}\sin\theta)=\\
+        &\bigg(\frac{15}{8\pi}\bigg)^{1/2} \bigg(\frac{3}{8\pi}\bigg)^{1/2}
+           \int_0^\pi d\theta\sin^3\theta\cos\theta
+           \int_0^{2\pi}d\phi \mathrm{e}^{-2i\phi}
+    \end{align*}
+   La integral correspondiente al ángulo $\phi$ es cero
+   porque es la suma de la integral sobre el coseno y el 
+   seno sobre dos periodos completos. Por tanto la 
+   integral es cero y los armónicos esféricos son
+   ortogonales.
+    \end{solution}
+    
+
+\end{questions}
+
+\end{document}

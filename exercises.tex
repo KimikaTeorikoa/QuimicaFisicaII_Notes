@@ -1,0 +1,135 @@
+\documentclass[a4paper, 11pt]{article}
+\usepackage[spanish, es-tabla]{babel}
+
+%% Language and font encodings
+%\usepackage[english]{babel}
+\usepackage[utf8x]{inputenc}
+\usepackage[T1]{fontenc}
+
+%% Sets page size and margins
+\usepackage[a4paper,top=3cm,bottom=2cm,left=3cm,right=3cm,marginparwidth=1.75cm]{geometry}
+
+%% Useful packages
+\usepackage{amsmath}
+\usepackage{mathptmx}% http://ctan.org/pkg/mathptmx
+\usepackage[osf,sc]{mathpazo}
+\usepackage[scaled=1]{helvet}
+
+\usepackage{graphicx}
+%\usepackage[colorinlistoftodos]{todonotes}
+%\usepackage[colorlinks=true, allcolors=blue]{hyperref}
+
+\renewcommand{\sfdefault}{phv}
+\usepackage[margin=0pt,font={sf,scriptsize},labelfont=bf]{caption}
+\usepackage{sansmath}
+\usepackage{float} % to easily modify floats
+\usepackage{etoolbox} % nice command patching
+\usepackage{everyhook} % nice \every... patching
+\restylefloat{figure}
+\floatevery{figure}{\PushPreHook{math}{\sansmath}}
+% undo the change to \everymath at the end of the figure (etoolbox)
+\apptocmd{\endfigure}{\PopPreHook{math}}{}{}%\usepackage{helvet}
+\usepackage{sectsty}
+\allsectionsfont{\sffamily}
+
+
+\title{\huge\textsf{\textbf{Qu\'imica Física II}\\
+\Large \textit{Ejercicios de Química Cuántica}}}
+%\author{\sf David De Sancho Sánchez}
+\date{}
+\begin{document}
+\maketitle
+\large
+\begin{enumerate}
+    \item La función trabajo (\textit{work
+    function}) para el potasio es de 2.24
+    eV. Si se ilumina el potasio metálico
+    con luz de longitud de onda de 480 nm,
+    calcula (a) la energía cinética máxima
+    de los fotoelectrones y (b) la longitud
+    de onda umbral.
+    
+    \item Se lanza una roca con masa de 
+    50 g con velocidad de 40 m/s. ¿Cuál es
+    su longitud de onda de De Broglie?
+    
+    \item Se mide la velocidad de un
+    electrón y resulta ser de $5\times10^3$
+    m/s $\pm$0.003\%. ¿Dentro de qué
+    límites puede conocerse la posición de
+    dicho electrón a lo largo de la
+    dirección del vector velocidad?
+    
+    \item Suponiendo que $\psi_1$ y
+    $\psi_2$ son dos funciones reales que 
+    están normalizadas y son ortogonales, 
+    normaliza las siguientes funciones:
+    (a) $\psi_1+\psi_2$, (b) 
+    $\psi_1-\psi_2$.
+    
+    \item ¿Cuál de las siguientes funciones
+    es función propia del operador
+    $\hat{D}=\frac{d}{dx}$? (a) $kx^2$
+    (b) $\sin x$ (c) $\exp (kx)$ 
+    (d) $\exp(kx^2)$ (e) $\exp(ikx)$.
+    
+    \item Los operadores para la posición y
+    el momento lineal vienen dados por 
+    \begin{equation}
+        \begin{array}{cc}
+             \hat{x}& =x  \\
+            \hat{p}_x& =\frac{\hbar}{i}\big(\frac{\partial}{\partial x}\big)
+        \end{array}
+    \end{equation}
+    (a) ¿Son estos operadores hermíticos?
+    (b) ¿Conmutan estos operadores?
+    (c) ¿Son los operadores citados lineales
+    o no lineales?
+    (c) ¿Es la función $\psi_1=A\sin (n\pi
+    x/a)$, donde $A$, $n$ y $a$ son
+    constantes, una función propia de ambos
+    operadores?
+   
+   \item Normaliza la función del ejercicio
+   6c en el dominio $0\leq x\leq a$.
+   
+   \item Determina las condicione necesarias
+   para que la función $\psi(x)=x\exp(-\alpha
+   x^2)$ sea función propia del operador 
+   $\hat{\Omega}=\frac{d^2}{dx^2} + bx^2$.
+   Normalizar la función y calcular el valor 
+   propio de $x$ ($\langle x\rangle$) para un
+   sistema descrito por dicha función.
+   
+   \item Calcula el valor medio del momento y
+   la posición para el caso de una partícula de
+   masa $m$ en una caja unidimensional de anchura
+   $L$. Comprueba que se cumple el principio de
+   incertidumbre.
+   
+   \item Sea una partícula de masa $m$ que se
+   mueve en una caja de potencial de anchura $L$.
+   (a) Calcula la probabilidad de que la partícula
+   se encuentre entre $L/4$ y $3L/4$. (b) Evalua el
+   límite clásico.
+   
+  \item Un rodamiento de masa 1 g se encuentra
+  en una caja unidimensional de anchura 10 cm
+  moviéndose a una velocidad de 1 cm/s. (a) Calcula
+  el número cuántico. (b) Muestra cuál es el especiamiento
+  entre dos niveles para el valor del número cuántico 
+  obtenido en el apartado anterior. (c) ¿Qué ilustran los 
+  resultados?
+  
+  \item Una masa de 45 g en un muelle oscila a la 
+  frecuencia de 2.4 vibraciones por segundo con 
+  una amplitud de 4 cm. (a) Calcula la constante 
+  de fuerza del muelle. (b) ¿Cuál sería el número
+  cuántico $v$ si el sistema se tratase 
+  mecanocuánticamente?
+  
+  \item Calcula la frecuencia de la radiación emitida
+  cuando un oscilador armónico de frecuencia $6\times 10^{13}$
+  s$^{-1}$ salta del nivel 8 al 7.
+\end{enumerate}
+\end{document}
