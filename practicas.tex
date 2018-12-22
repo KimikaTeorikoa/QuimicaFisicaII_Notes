@@ -251,22 +251,19 @@ alcanzar y cuáles son las herramientas que vamos a utilizar. En
 los siguientes capítulos utilizaremos a fondo estas herramientas.
 Profundizaremos en la información que como químicos podemos extraer
 de la Mecánica Cuántica y en las relaciones que la computación 
-permite establecer entre teoría y experimentos. 
-
-En concreto el problema en que nos vamos a centrar es la determinación del 
-espectro rotovibracional del monóxido de carbono (CO). A continuación 
-determinaremos las variaciones en el espectro ultravioleta en presencia de 
+permite establecer entre teoría y experimentos. En concreto el
+problema en que nos vamos a centrar es la determinación del espectro
+rotovibracional del monóxido de carbono (CO). Después determinaremos
+las variaciones en el espectro ultravioleta en presencia de 
 diferentes disolventes.
 
-A continuación en este manual introduciremos los fundamentos teóricos
+Pero primero debemos introducir los fundamentos teóricos
 y las herramientas que vamos a utilizar para alcanzar nuestros 
 objetivos. Por un lado, la mecánica cuántica; por otro, la
-computación, que se usa hoy en día para resolver las ecuaciónes 
+computación, que se usa hoy en día para resolver las ecuaciones 
 mecanocuánticas. Éstas han sido incorporadas en un \textit{software}
-de cálculo, \textbf{Gaussian03}. Pero antes de describir cómo vamos 
-a hacer uso de este programa, presentaremos el sistema operativo 
-\textbf{Linux}.
-
+de cálculo, \textbf{Gaussian-03}, al que accederemos a través de 
+los comandos del sistema operativo \textbf{Linux}.
 
 \section{Linux}
 \subsection{Qué es Linux}
@@ -285,39 +282,70 @@ A pesar de que Linux dispone de un entorno gráfico análogo al de
 Windows o Mac OS X, la interfaz más importante entre el usuario y el 
 sistema operativo en Linux es la \textbf{terminal}. En la Tabla~
 \ref{tb:commands} mostramos algunos de los comandos más habituales.
+En nuestro trabajo utilizaremos tanto la terminal como el entorno
+gráfico de Linux.
 
-\begin{table}[t!]
+\begin{table}[h!]
 \centering
-	\small
+	\scriptsize
 	\begin{tabular}{l|l|l}
 		Comando & Descripción & Opciones \\
 		\hline
 		& & \\
 		\texttt{ls} & Lista de archivos y directorios & \texttt{-l}, \texttt{-lt}, \texttt{-ltr} \\ 
 		\texttt{pwd} & Escribe el \textit{path} & \\ 
-		\texttt{df} & Mostrar la cantidad de espacio libre en disco & \texttt{}\\ 
-		\texttt{du} & Mostrar uso de disco por parte de archivos y directorios & \texttt{}\\
+		\texttt{df} & Mostrar la cantidad de espacio libre en disco & \texttt{-h}\\ 
+		\texttt{du} & Mostrar uso de disco por parte de archivos y directorios & \texttt{-h}\\
 		\texttt{man command} & Mostrar manual del programa \texttt{command}  & \texttt{}\\ 
 		\texttt{grep} & Seleccionar un argumento  & \texttt{}\\
 
 		\texttt{bg} & Mandar proceso al \textit{background}  & \texttt{}\\ 
 		\texttt{fg} & Traer proceso al \textit{foreground}  & \texttt{}\\ 
 		\texttt{touch file\_name} & Crear archivo  & \\ 
-		\texttt{rm file\_name} & Borrar archivo  & \\ 
+		\texttt{rm file\_name} & Borrar archivo  & \texttt{-i, -r}\\ 
 		\texttt{cat file\_name} & Mostrar archivo por pantalla & \\ 
 		\texttt{more file\_name} & Mostrar gradualmente el archivo & \texttt{}\\ 
 		\texttt{nano file\_name} & Mostrar el archivo con el editor \texttt{nano}  & \\ 
+		\texttt{mv file1 file2} & Mover archivo  & \\ 
+		\texttt{cp file1 file2} & Crear copia de \texttt{file1}  & \texttt{-r}\\ 
 		\texttt{mkdir folder\_name} & Crear directorio  & \\ 
 		\texttt{cd folder\_name} & Cambio de directorio \texttt{cd folder\_name}& \texttt{}\\ 
-		\texttt{mv file1 file2} & Mover archivo  & \texttt{}\\ 
-		\texttt{cp file1 file2} & Crear copia de \texttt{file1}  & \texttt{}\\ 
     \end{tabular}
-    %\caption{Armónicos esféricos, dependientes de los números
-    %cuánticos $l$ y $m_l$.}
+    \caption{Comandos habituales en el sistema operativo Linux}
     \label{tb:commands}
 \end{table}
 
 \section{Introducción a la Química Cuántica}
+Las propiedades de los átomos y moléculas están descritas
+íntegramente por su función de onda, $\Psi$. Para obtener estas 
+propiedades debemos ser capaces de resolver la ecuación 
+de Schrödinger independiente del tiempo
+\begin{equation}
+    \hat{H}\Psi_\mathrm{Tot}=E_\mathrm{Tot}\Psi_\mathrm{Tot} 
+\end{equation}
+donde $\hat{H}$ es el operador \textit{hamiltoniano} y
+$E_\mathrm{Tot}$ es la energía total. A su vez, el 
+hamiltoniano se puede escribir como una suma de cinco términos
+\begin{equation}
+    \hat{H} = \hat{T}_N + \hat{V}_{NN} + \hat{T}_e + \hat{V}_{ee} +\hat{V}_{eN}
+\end{equation}
+Los dos primeros términos de esta suma se corresponden con la 
+energía cinética nuclear ($\hat{T}_N$) y la energía potencial de
+interacción entre núcleos ($\hat{V}_{NN}$). Ambos dependen de las
+coordenadas de los núcleos atómicos, $\{R_\alpha\}$. Análogamente, 
+los términos $\hat{T}_e $ y $\hat{V}_{ee}$ corresponden a la 
+energía cinética y potencial de los electrones, respectivamente, y
+dependen de las coordenadas de los electrones, $\{r_i\}$.
+Finalmente, $\hat{V}_{eN}$ es el operador energía potencial
+núcleo-electrón, y es función tanto de $\{R_\alpha\}$ como de 
+$\{r_i\}$. Por tanto, podemos escribir la ecuación de Schrödinger
+explicitamente de la siguiente manera
+\begin{equation}
+    \hat{H}\Psi_\mathrm{Tot}   =
+    (\hat{T}_N + \hat{V}_{NN} + \hat{T}_e + \hat{V}_{ee} +\hat{V}_{eN})\Psi_\mathrm{Tot} 
+    = E_\mathrm{Tot}\Psi_\mathrm{Tot}
+\end{equation}
+
 
 \chapter{Átomos}
 
