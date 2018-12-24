@@ -344,16 +344,54 @@ explicitamente de la siguiente manera
     \hat{H}\Psi_\mathrm{Tot}   =
     (\hat{T}_N + \hat{V}_{NN} + \hat{T}_e + \hat{V}_{ee} +\hat{V}_{eN})\Psi_\mathrm{Tot} 
     = E_\mathrm{Tot}\Psi_\mathrm{Tot}
+    \label{eq:hamilt_terms}
 \end{equation}
 En los siguientes capítulos veremos qué valores adoptan
 estos términos en caso tanto de átomos individuales
 como en el caso de moléc
 las.
-\chapter{Átomos}
 
-\section{Métuodo de Hartree Fock para átomos}
-\subsection{Las ecuaciones que debemos resolver}
-\subsection{Soluciones}
+\chapter{Átomos}
+\section{Método de Hartree Fock para átomos}
+\subsection{Planteamineto de las ecuaciones}
+En el caso de los átomos individuales, el término correspondiente
+a la interacción entre núcleos en la equación \ref{eq:hamilt_terms}
+es igual a cero, $\hat{V}_{NN}=0$. Asímismo, podemos ingnorar el
+efecto del movimiento traslacional del átomo. Por tanto, la expresión
+restante para el operador hamiltoniano es
+\begin{equation}
+    \hat{H}_e   =
+    (\hat{T}_e + \hat{V}_{ee} +\hat{V}_{eN})
+\end{equation}
+Todos los términos de este hamiltoniano electrónico dependen 
+exclusivamente de las coordenadas electrónicas. Para este 
+hamiltoniano podremos encontrar una función de onda que
+también es dependiente de las coordenadas electrónicas,
+$\Psi_e(\{r_i\})$. El valor propio correspondiente a esta
+función propia será la energía, $E_e$, de modo que la 
+ecuación que debemos resolver es
+\begin{equation}
+    \hat{H}_e\Psi_e(\{r_i\})   =
+    (\hat{T}_e + \hat{V}_{ee} +\hat{V}_{eN})\Psi_e(\{r_i\})= E_e\Psi_e(\{r_i\})
+\end{equation}
+
+\subsection{Soluciones para las ecuaciones}
+Lamentablemente, estas ecuaciones tienen una solución analítica
+sólo para átomos monoelectrónicos, a los que llamamos 
+hidrogenoides. En los casos restantes, debemos usar métodos
+aproximados. En particular, el método que utilizaremos nosotros
+es el de Hartree-Fock (HF). En el método de Hartree-Fock, 
+la función de onda para $N$ electrones, $\Psi^{HF}_e$, se
+expresa como un conjunto de funciones monoelectrónicas (espín-
+orbitales), para cada una de las cuales usamos la siguiente
+descripción
+\begin{equation}
+    \chi(x)=\phi_i(r)\sigma(s)
+\end{equation}
+Los espín-orbitales tienen dos partes, espacial y de espín, y
+la parte de espin a su vez puede ser de dos tipos ($\alpha$
+y $beta$).
+
 \section{Input para el programa Gaussian}
 \section{Output de Gaussian}
 
