@@ -21,7 +21,7 @@
 %%
 % Book metadata
 %\title{A Tufte-Style Book\thanks{Thanks to Edward R.~Tufte for his inspiration.}}
-\author{Xabier L\'opez, Jon M. Matxain, \\David De Sancho \& Irene Casademont}
+\author{X. L\'opez, J. M. Matxain, D. De Sancho \& I. Casademont}
 %\publisher{Publisher of This Book}
 \usepackage[spanish, es-tabla]{babel}
 \usepackage[utf8x]{inputenc}
@@ -353,7 +353,7 @@ las.
 
 \chapter{Átomos}
 \section{Método de Hartree Fock para átomos}
-\subsection{Planteamineto de las ecuaciones}
+\subsection{Planteamiento de las ecuaciones}
 En el caso de los átomos individuales, el término correspondiente
 a la interacción entre núcleos en la equación \ref{eq:hamilt_terms}
 es igual a cero, $\hat{V}_{NN}=0$. Asímismo, podemos ingnorar el
@@ -389,19 +389,583 @@ descripción
     \chi(x)=\phi_i(r)\sigma(s)
 \end{equation}
 Los espín-orbitales tienen dos partes, espacial y de espín, y
-la parte de espin a su vez puede ser de dos tipos ($\alpha$
-y $beta$).
+la parte de espín a su vez puede ser de dos tipos ($\alpha$
+y $\beta$). Cuando tenemos espín $\alpha$, la función de onda
+resultante es $\chi_i=\phi_i$, mientras que cuando tenemos
+espín $\beta$, la función de onda es $\chi_i=\bar{\phi}_i$.
+Para expresar la función de onda para dos electrones, usamos
+el producto de los espín-orbitales, 
+$\Psi_e^{HF}=\phi_1(1)\bar{\phi}_1(2)$.
+Por otra parte, los electrones son fermiones, por lo que
+deben tener una función de onda antisimétrica. Con estos 
+requisitos, podemos escribir nuestra función de onda como
+\begin{equation}
+    \psi_e^{HF}=\frac{1}{\sqrt{2}}(\phi_1(1)\bar{\phi}_1(2)-\phi_1(2)\bar{\phi}_1(1))
+\end{equation}
+que a su vez podemos escribir como un determinante
+\begin{equation}
+    \psi_e^{HF}=\frac{1}{\sqrt{2}} 
+    \begin{vmatrix}
+    \phi_1(1) & \bar{\phi}_1(1)\\ 
+    \phi_1(2) & \bar{\phi}_1(2)
+    \end{vmatrix}
+\end{equation}
+Quien propuso por primera vez este tipo de expresión fue
+John C. Slater (en 1929), y por este motivo este tipo
+de determinantes reciben su nombre. En general, podemos
+escribir un determinante de Slater como
+\begin{equation}
+    \psi_e^{HF}=\frac{1}{\sqrt{2}} 
+    \begin{vmatrix}
+    \phi_1(1) & \bar{\phi}_1(1) & \phi_2(1) & \bar{\phi}_2(1)& ...& \phi_{N/2}(1) & \bar{\phi}_{N/2}(1)\\ 
+    \phi_1(2) & \bar{\phi}_1(2) & \phi_2(2) & \bar{\phi}_2(2)& ...& \phi_{N/2}(2) & \bar{\phi}_{N/2}(2) \\
+    \vdots & \vdots &\vdots &\vdots &\vdots &\vdots &\vdots \\
+    \phi_1(N) & \bar{\phi}_1(N) & \phi_2(N) & \bar{\phi}_2(N)& ...& \phi_{N/2}(N) & \bar{\phi}_{N/2}(N)
+    \end{vmatrix}
+\end{equation}
 
 \section{Input para el programa Gaussian}
+Para resolver el problema que hemos descrito, usaremos
+el programa Gaussian. Le daremos instrucciones al programa
+usando un archivo de \texttt{input} o archivo de entrada.
+En este fichero decimos exactamente qué es lo que queremos
+calcular. Los archivos de input tienen la extensión 
+\texttt{.com} y su sintaxis es como en el siguiente ejemplo:
+
+\begin{verbatim}
+$RunGauss
+%nproc=1
+%Chk=h2
+#ROHF / STO-3G gfinput pop=full
+
+Calculo del atomo de hidrogeno 
+ 
+0,2
+H
+\end{verbatim}
+
+Las tres primeras líneas son necesarias para el programa y 
+no las vamos a modificar. La cuarta línea, se corresponde 
+con nuestro método (en nuestro caso, \textit{restricted open 
+shell Hartree Fock}, \texttt{ROHF}), la base (\texttt{STO-3G}),
+y el archivo de salida para la escritura de los espín-orbitales.
+En la sexta línea escribimos el título de nuestro cálculo.
+Finalmente, incluimos la carga de nuestro átomo (0, al ser 
+neutro) y su multiplicidad ($2s+1=2$, en el caso del hidrógeno
+por tener un electrón individual con $s=1/2$), así como su símbolo
+(\texttt{H}). A este archivo lo llamaremos \texttt{h\_atom.com}.
+
+
 \section{Output de Gaussian}
+El archivo de output o de salida de Gaussian lleva la extensión
+\texttt{.log}. Para generar este archivo, en primer lugar debemos
+ejecutar el programa, lo cual se consigue ejecutando en la línea
+de comandos lo siguiente
+\begin{verbatim}
+    $> g03_v h_atom.com
+\end{verbatim}
+Al terminar de correr el programa, se genera el archivo de salida
+correspondiente \texttt{h\_atom.log}. En él podemos encontrar todo
+tipo de información, empezando por la energía total y la 
+configuración electrónica. Pero antes debemos comprobar que
+el cálculo haya terminado correctamente, en cuyo caso aparece la 
+línea "\texttt{Normal termination of Gaussian 03}" en su 
+última línea. Algo más arriba encontramos un resumen del
+cálculo realizado.
+\begin{verbatim}
+1\1\GINC-CLEANDER\SP\ROHF\STO-3G\H1(2)\POBMABEJ\01-Jan-2018\0\\
+#ROHF / STO-3G gfinput pop=full\Calculo del atomo de hidrogeno\\0,2\H\\
+Version=AM64L-G03RevD.01\State=2-A1G\HF=-0.4665819\
+RMSD=0.00e+00\Thermal=0.\Dipole=0.,0.,0.\PG=0H[O(H1)]\\@
+\end{verbatim}
+Es importante notar la línea en la que se nos muestra el resultado
+de nuestro cálculo, \texttt{HF=-0.4665819}, correspondiente
+al cálculo tal y como resulta con el método y la base utilizados.
+Para ver la configuración electrónica, usaremos un programa 
+llamado MOLDEN, que nos ayudará a la hora de analizar el output
+del programa. Para ejecutarlo, sólo debemos escribir en nuestra
+línea de comandos
+\begin{verbatim}
+    $> molden h_atom.log
+\end{verbatim}
+y en el menú correspondiente escogeremos "\texttt{Density-mode}".
+
+\begin{table}[h!]
+\centering
+	\scriptsize
+	\begin{tabular}{ll}
+     \toprule
+		1a.u. & =  4.35974812 x 10$^−18$ J  \\
+		         &  =  27.2113957 eV \\
+	             &  = 627.509541 Kcal/mol \\ 
+		         & = 219474.625 cm$^−1$ \\ 
+		        & = 6.57968374 x 10$^9$ MHz \\ 
+		        & = 315773.213 K \\
+		        & = 2625.49992 KJ/mol \\ 
+    \bottomrule
+    \end{tabular}
+    \caption{Factores de conversión de la energía}
+    \label{tb:commands}
+\end{table}
+
 
 \chapter{Moléculas: Introducción}
+\section{Método de Hartree Fock para moléculas}
+\subsection{Planteamiento de las ecuaciones}
+
+Recordemos primero la ecuación que necesitamos utilizar:
+
+\begin{equation}
+    (\hat{T}_N + \hat{V}_{NN} + \hat{T}_e + \hat{V}_{ee} +\hat{V}_{eN})\Psi_\mathrm{tot}(\{R_\alpha\},\{r_i\}) 
+    = E_\mathrm{tot}\Psi_\mathrm{Tot}(\{R_\alpha\},\{r_i\}) 
+\end{equation}
+
+En el caso de las moléculas, a diferéncia de los atómos,  $\hat{V}_{NN}\neq0$ porque tenemos más de un núcleo. Esto dificulta las cosas. Ahora tenemos que hacer una aproximación para resolver esta ecuación que no haciamos con los átomos. Los núcleos, al tener la masa mucho más grande que los electrones, se moverán más lentos. Supondremos que mientras los electrones hacen su movimiento, los núcleos no se mueven. Así, supondremos que el movimiento de los electrones y de los núcleos está desacoblado. Esta aproximación se denomina aproximación de Born-Oppenheimer, y en un potencial creado por los electrones se moverían los núcleos en el mismo sitio. 
+
+Por lo tanto, ¿Cómo quedan, en este caso las ecuaciones que es necesario resolver? Primero, tendremos que resolver la ecuación del electrón. ¿Cómo queda esta ecuación?
+
+\begin{equation} 
+    \hat{H}_\mathrm{e}\Psi_\mathrm{e}=E_\mathrm{e}\Psi_\mathrm{e} 
+\end{equation}
+
+\begin{equation}
+    (\hat{T}_\mathrm{e} + \hat{V}_\mathrm{ee} +\hat{V}_{eN})\Psi_\mathrm{e}(\{r_i\};\{R_\alpha\})
+    = E_\mathrm{e}\{R_\alpha\}\Psi_\mathrm{e}(\{r_i\};\{R_\alpha\})
+\end{equation}
+
+Parecida a la que teníamos para los átomos. Pero ahora, la función de onda electrónica y la energía electrónica dependen de las posiciones de los núcleos. Así, la energía electrónica calculada nos introduce en la ecuación nuclear como potencial, y la ecuación que necesitámos resolver para los núcleos nos quedará así:
+
+\begin{equation}
+    (\hat{T}_\mathrm{N} + \hat{V}_\mathrm{NN} +E_\mathrm{e})\Psi_\mathrm{N}(\{R_\alpha\})
+    = E_\mathrm{Tot}\Psi_\mathrm{N}(\{R_\alpha\})
+\end{equation}
+
+Así, introducimos el concepto de Superfície de Energia Potencial $V\{R_\alpha\}=(\hat{V}_\mathrm{NN}\{R_\alpha\}+E_\mathrm{e}\{R_\alpha\})$. Los núcleos se mueven según el potencial creado por los electrones y los otros núcleos.
+
+\subsection{Soluciones para las ecuaciones}
+En el caso de los átomos, solo necesitábamos  resolver la ecuación que correspondía a los electrones y conseguíamos así, la función de onda electrónica. En el caso de las moléculas, se deben resolver dos ecuaciones, la electrónica y la nuclear.
+
+Como en el caso de los átomos, resolvemos la ecuación electrónica utilizado el método Hartree-Fock. La diferencia principal es que ahora los orbitales serán orbitales moleculares y no orbitales atómicos. Los Orbitales Moleculares son Combinaciones Lineales de los Orbitales Atómicos, y están deslocalizados a lo largo de la molécula y no localizados, como en el modelo de Lewis. Por lo tanto, la función de onda electrónica para una molécula de capa cerrada es,
+
+\begin{equation}
+    \psi_e^{HF}=\frac{1}{\sqrt{N}} 
+    \begin{vmatrix}
+    \phi_1(1) & \bar{\phi}_1(1) & \phi_2(1) & \bar{\phi}_2(1)& ...& \phi_{N/2}(1) & \bar{\phi}_{N/2}(1)\\ 
+    \phi_1(2) & \bar{\phi}_1(2) & \phi_2(2) & \bar{\phi}_2(2)& ...& \phi_{N/2}(2) & \bar{\phi}_{N/2}(2) \\
+    \phi_1(3) & \bar{\phi}_1(3) & \phi_2(3) & \bar{\phi}_2(3)& ...& \phi_{N/2}(3) & \bar{\phi}_{N/2}(3) \\
+    \vdots & \vdots &\vdots &\vdots &\vdots &\vdots &\vdots \\
+    \phi_1(N) & \bar{\phi}_1(N) & \phi_2(N) & \bar{\phi}_2(N)& ...& \phi_{N/2}(N) & \bar{\phi}_{N/2}(N)
+    \end{vmatrix}
+\end{equation}
+
+como en el ejemplo de los átomos. Pero ahora los orbitales no son orbitales atómicos, como teníamos antes, sino orbitales moleculares. 
+
+De la ecuación a resolver, obtenemos la función de onda del estado fundamental y la energía electrónica. Sustituimos la energía electrónica en la ecuación de Schrödinger nuclear. No es explícito, pero resuelta esta ecuación, se consiguen las vibraciones y los modos de rotación de los núcleos. Los niveles vibracionales y las rotaciones se pueden calcular así, y por medio de diferencias de energía, microondas, infrarrojo y los espectros raman. Teniendo en cuenta los resultados electrónicos y nucleares, los espectros UV/Vis también se pueden calcular.
+
+\section{Input del programa Gaussian para moléculas}
+
+Como en el caso de los átomos, podemos utilizar el programa Gaussian para hacer los cálculos de las moléculas. En estos cálculos resolveremos las ecuaciones discutidas en la sección 3.1. El input o fichero de entrada es parecido al fichero utilizado en el caso de los átomos. Ahora tendremos que especificar la geometía de la molécula al programa. Los núcleos estarán fijos en la geometría expresada por nosotros, y el programa nos resolverá ecuación electrónica.
+
+¿Cómo se especifica la geometría de una molécula? Hay dos formas distintas. Dando las coordenadas cartesianas de la molécula o utilizando la z-matrix. En la z-matrix se utilizan coordinadas internas, y cuando las coordinadas cartesianas son desconocidas, es la forma más adecuada para concretar la geometría.
+
+\subsection{Input de la molécula H$_2$}
+
+\begin{verbatim}
+$RunGauss
+%nproc=1
+%Chk=h2
+#ROHF / STO-3G\ddot{A} gfinput pop=full
+[línea en blanco]
+Cálculo de la molécula de hidrogeno 
+[línea en blanco] 
+0,1
+H
+H 1 hh2
+[línea en blanco]
+hh2 0.75
+\end{verbatim}
+
+Ahora, la molécula de H$_2$ es un singlete, tiene todos los electrones apareados. Por lo tanto, la multiplicidad no es como 2 átomos, sino como 1. Y después de la línia de 0,1, hemos expresado la z-matrix de la molécula de H$_2$. La distancia entre los dos átomos es de 0.75 \r{A}.
+
+\section{Output del programa Gaussian}
+
+Los resultados de Guassian los tenemos en el fichero Output o fichero de salida, como en el ejemplo de los átomos. Para conseguir este fichero, primero tenemos que ejecutar el input de Gaussian:
+
+\begin{verbatim}
+    $> g03_v h_2.com
+\end{verbatim}
+
+Así, cuando el cálculo termina creará el fichero h2.log, y en este fichero nos aparecerá toda la información. ¿Cuál es la información que nos interesa? En el caso del átomo hidrogeno buscamos la energía electrónica y la configuración electrónica. Esta vez, buscaremos información parecida. En las secciones siguientes veremos cómo conseguir más información, por ejemplo, el dipolo de la molécula, las cargas de los átomos, etc. Primero, tenemos que ver que nuestro cálculo ha terminado bien. Así, tenemos que ir al final del fichero, y las últimas líneas tienen que ser $"\texttt{Normal termination of Gaussian 03...}"$. Así pues, el cálculo ha terminado bien. Un poco más arriba, aparecen resumidos los resultados en un párrafo:
+
+\begin{verbatim}
+1\1\GINC-CLEANDER\SP\RHF\STO-3G\H2\POBMABEJ\05-Jan-2010\0\\#rhf/STO-3G
+gnput pop=full\\Calculo de la molecula de hidrogeno\\0,1\H\H,1,0.7\\
+Version=AM64L-G03RevD.01\State=1-SGG\HF=-1.1161514-\RMSD=0.000e+00\
+Thermal=0.\Dipole=0.,0.,0.\PG=D*H [C*(H1.H1)℄\\@
+\end{verbatim}
+
+La energía electrónica de la molécula de H$_2$, en la geometría que hemos expresado es \texttt{HF=-1.1161514} u.a. Para ver los Orbitales Moleculares, como los orbitales atómicos, utilizaremos el programa MOLDEN. Tenemos que darnos cuenta que ahora en vez de orbitales atómicos se consiguen los orbitales moleculares, y que estos son las combinaciones lineales de los orbitales atómicos.
+
+\section{Superfície de Energía Potencial de las moléculas de CO y H$_2$}
+
+Debido a la aproximación Born-Oppenheimer, sabemos que a cada geometría diferente le corresponde una energía electrónica diferente.La dependencia de la energía electónica con las posiciones de los núcleos aparece la Superície de Energía Potencial. En una molécula diatómica, esto es una curva. En esta sección calcularemos la Superficie Energía Potencial de la molécula de CO y H$_2$. Para eso, tenemos que calcular la energía electrónica que le corresponde para diferentes distancias C-O y H-H, completando la tabla de la parte inferior (la tabla solo está para CO, pero sería parecida para la molécula de hidrógeno).
+
+\begin{table}[h!]
+\centering
+	\scriptsize
+	\begin{tabular}{ll|ll|ll}
+	\toprule
+		R(C-O) & E$_e$ & R(C-O) & E$_e$ & R(C-O) & E$_e$ \\
+		\hline
+		0.90   &       & 1.08   &       & 1.19   &        \\
+		0.95   &       & 1.09   &       & 1.20   &        \\
+		0.98   &       & 1.10   &       & 1.22   &        \\
+		1.00   &       & 1.11   &       & 1.24   &        \\
+		1.01   &       & 1.12   &       & 1.26   &        \\
+		1.02   &       & 1.13   &       & 1.28   &        \\
+		1.03   &       & 1.14   &       & 1.30   &        \\
+		1.04   &       & 1.15   &       & 1.40   &        \\
+		1.05   &       & 1.16   &       & 1.50   &        \\
+		1.06   &       & 1.17   &       & 1.60   &        \\
+		1.07   &       & 1.18   &       & 1.70   &        \\
+	\bottomrule	
+    \end{tabular}
+\end{table}
+
+Al completar esta tabla, los resultados se pueden representar con el programa XMGRACE. Para hacer eso, estos resultados se tienen que guardar en un fichero (por ejemplo, h2$\_{geom}$.dat) y después ejecutar desde la línea de comando:
+
+\begin{verbatim}
+    $> xmgrace h2\_geom.dat
+\end{verbatim}
+
+Una vez hecho esto, conseguríamos un gráfico como el que se muestra en la imagen de abajo:
+
+\begin{figure}
+\centering
+\includegraphics[scale=0.7]{PES_H2.png}
+\end{figure}
+
+
+\section{Configuración electónica}
+Los Orbitales Moleculares son combinaciones lineales de los Orbitales Atómicos. 
+En el caso del átomo de hidrógeno, tenemos el electrón en el orbital 1s. En la
+molécula de H$_2$, 2 orbitales atómicos 1s se combinarían para dar dos orbitales
+moleculares: $\sigma_g=\frac{1}{\sqrt{2}}(1s+1s)$ y
+$\sigma_u=\frac{1}{\sqrt{2}}(1s-1s)$.
+
+Con Molden podemos ver como se consigue el mínimo de la molécula de H$_2$ que 
+hemos observado en la figura anterior.
+
 
 \chapter{Moléculas. Optimización de la geometría}
 
+\section{Qué es la optmización de geometria? La molécula de H$_2$}
+
+Supongamos que la geometría de la molécula que queremos calcular es desconocida. 
+En este caso, supongamos que la geometría de la molécula H$_2$  es desconocida, 
+que no sabemos cuál es la distancia de unión H-H. ¿Cuál sería su geometría optima? 
+Sería aquella en la que tenga un mínimo su Superfície de Energía Potencial. 
+Por lo tanto, el problema que debemos resolver es análogo al problema matemático
+de encontrar un mínimo para la función $f(x)$. En ambos casos podemos utilizar 
+métodos iguales, como el caso del método del gradiente conjugado. Veamos cómo
+funciona esta clase de cálculo tomado como ejemplo la molécula H$_2$.
+
+\begin{figure}
+\centering
+\includegraphics[scale=0.7]{PES_opt_H2.png}
+\caption{Superfície de Energía Potencial de la molécula de H$_2$ }
+\end{figure}
+
+Primero, ¿Cómo sería el input del programa Gaussian? Sería lo que tenemos a continuación:
+
+\begin{verbatim}
+$RunGauss
+%nproc=1
+%Chk=h2
+#ROHF / STO-3G gfinput pop=full opt
+[línea en blanco]
+Cálculo de la molécula de hidrogeno 
+[línea en blanco] 
+0,1
+H
+H 1 hh2
+[línea en blanco]
+hh2 0.3
+\end{verbatim}
+
+¿Qué diferencia hay con los cálculos anteriores? Ahora queremos optimizar la geometría. Para eso, tenemos que escribir \textit{opt} en el input. Eso le dice a Gaussian que optimice la geometría. De lo contrario, haría como el primer cálculo, calcularía la energía electrónica que corresponde a la geometría expresada. En este caso, sabemos que la distancia H-H es 0.75 $\ddot{A}$ . Para ver que la optimización de la geometría funciona bien, al principio le pondremos una geometría mala, por ejemplo, 0.3 $\ddot{A}$ de distancia entre hidrógenos. 
+
+¿Qué hace Gaussian con este input? En la imagen 4.1 
+vemos la Superfície de Energía Potencial de H$_2$ (línea continua) y cerca de esta cinco puntos. En un principio, le hemos dicho a Gaussian que la distancia H-H es 0.3 $\ddot{A}$, y lo que hace Gaussian es calcular la energía electrónica que corresponde a esta primera distancia. Esta energía es el punto 1 del gráfico. Una vez hecho esto, Gaussian calcula el gradiente de la energía, y continuado el sentido del gradiente, calcula una nueva geometría. Con esta nueva geometría el proceso se hace otra vez. Calcula la energía electrónica que corresponde a la nueva geometría (Punto 2), después el gradiente, y por medio del gradiente, propone una geometría nueva. Este proceso es iterativo, y termina al llegar al mínimo del Potencial, ahí mismo el gradiente es cero. Si sabemos que estamos en un mínimo (o máximo) el gradiente de esa función es cero.
+
+En el Output de Gaussian o fichero de salida tenemos que buscar la línea que pone $"\texttt{Optimized parameters}"$ para buscar la geometría optimizada. Ahí mismo, podremos ver que la distancia H-H óptima es de 0.7122$\ddot{A}$.
+
+\section{Cálculo de optimización de la geometría de una molécula diatómica y de otras propiadades}
+
+Ahora, llevaremos a cabo la optimización de la geometría de otras moléculas diatómicas. No solo eso. Hasta ahora no lo hemos visto, pero Gaussian calcula muchas otras propiedades de las moléculas y los átomos, por ejemplo, el momento dipolar, la cargas parciales, la distribución de espin (si el espin de la molécula no es 0). En esta sección veremos cómo conseguir todos estos outputs de Gaussian y, completaremos la tabla de la parte inferior. 
+
+Para encontrar la geometría óptima buscaremos: $"\texttt{Optimized values}"$
+
+Para encontrar el momento dipolar buscaremos: $"\texttt{Dipole moment}"$
+
+Para encontrar las cargas buscaremos: $"\texttt{Mulliken charges}"$
+
+HOMO-LUMO gap (\bigtriangleup$_{HL}$): tenemos que buscar las energías asociadas a los orgitales HOMO y LUMO y, la difernecia entre estas dos energías corresponde al gap HOMO-LUMO. Podemos relacionar el gap con las excitaciones electrónicas.
+
+\begin{table}[h!]
+\centering
+	\scriptsize
+	\begin{tabular}{llllll}
+	\toprule
+	   & R &\mu & q$_1$ &  q$_2$ & \bigtriangleup$_{HL}$ \\
+		\hline
+		H$_2$ &   &   &   &  &   \\       
+		CO    &   &   &   &  &   \\       
+		N$_2$ &   &   &   &  &   \\
+	\bottomrule	
+    \end{tabular}
+\end{table}
+
+\section{El espectro de microonda del CO}
+
+La espectroscopia de microondas de una molécula está asociada con las transiciones de niveles de rotación.
+
+En la asignatura de Química Física Adelantada hemos visto cuál es la interpretación física de la espectroscopía de microondas y cómo se tiene que ulilizar la cuántica para entender los espectros. Con el espectro de microonda experimental de una molécula aprendimos a conseguir las distancias de equilibrio, R$_e$.
+
+Resumiendo, la diferencia entre las líneas que aparece en el espectro es 2B, siendo B la constante de rotación. Utilizando la aproximación del rotor rígido, si sabemos que la energía de los niveles de rotación es:
+
+\begin{equation}
+    F(J) = BJ(J+1)
+\end{equation}
+
+siendo J el número cuántico, si sabemos que  B, la constante de rotación, es:
+
+\begin{equation}
+    B = \frac{\hbar}{4c\pi I}
+\end{equation}
+
+dónde I es el momento de inercia. En el caso de una molécula diatómica, el momento de inercia es:
+
+\begin{equation}
+    I = \mu R_e^2
+\end{equation}
+
+siendo $\mu=\frac{m_1m_2}{m_1+m_2}$ la masa reducida.
+
+En esta asignatura utilizaremos el proceso inverso. Al hacer la optimización de la geometría, calculamos las distancias de equilibrio de una molecula, R$_e$. Utilizando esto, podemos calcular los momentos de inercia B y F (J), respectivamente. Utilizando F(J) y teniendo en cuenta las normas de selección ($\bigtriangleupJ=\pm1$), podemos calcular el espectro de microonda.
+
+Como ejemplo utilizaremos la molécula de HF. Teniendo en cuenta que una molécula tiene que tener momento dipolar para tener espectro de microonda. Para completar las tablas de la parte inferior, primero tenemos que conseguir el cálculo cuántico de R$_e$.
+
+Datos necesarios: $\hbar$=1.0545·10$^{-34}$ J/s; c=3·10$^8$m/s
+
+\begin{table}[h!]
+\centering 
+	\scriptsize
+	\begin{tabular}{llll}
+	\toprule
+	    R$_e$ &\mu & I & B  \\
+	\bottomrule	
+    \end{tabular}
+\end{table}
+
+\begin{table}[h!]
+\centering
+	\scriptsize
+	\begin{tabular}{ll||ll}
+	\toprule
+	    Nivel Rotacional & F (J) (cm $^-1$)& Transiciones & \bigtriangleup F (cm$^-1$) \\
+		\hline
+            J=0  &  & O\rightarrow1 &   \\
+            J=1  &  & 1\rightarrow2 &   \\
+            J=2  &  & 2\rightarrow3 &   \\
+            J=3  &  & 3\rightarrow4 &   \\
+            J=4  &  & 4\rightarrow5 &   \\
+            J=5  &  & 5\rightarrow6 &   \\
+            J=6  &  & 6\rightarrow7 &   \\
+            J=7  &  & 7\rightarrow8 &   \\
+            J=8  &  & 8\rightarrow9 &   \\
+            J=9  &  & 9\rightarrow10&   \\
+            J=10 &  &               &   \\
+	\bottomrule	
+    \end{tabular}
+\end{table}
+
+
 \chapter{Moléculas: Cálculo de frecuencias}
 
+\section{Cálculo de frecuencias}
+
+¿Qué es el cálculo de frecuencia? Al optimizar la geometría hemos conseguido un punto que tiene gradiente 0. Para concretar que ese punto es un mínimo o un máximo se hace el cálculo de frecuencia. Las frecuencias están relacionadas con la segunda derivada de la energía electrónica. Si el gradiente en un punto en concreto es cero, ese punto es un mínimo o un máximo y tenemos que determinar el valor de la segunda derivada. Si la segunda derivada es positiva, estamos en un mínimo y, si es negativa, en un máximo.
+
+¿Cómo se lleva a cabo este cálculo? Primero, constituimos la matriz de las fuerzas de unión constantes. En la diagonalización de esta matriz, se calculan los modos de vibración normales y las frecuencias ($\bar{\nu}_e$).
+
+
+\subsection{Input de Gaussian para el cálculo de frecuencia}
+
+Ahora vamos a ver cómo se le dice a Gaussian que queremos llevar a cabo un cálculo de frecuencia. Como en los casos anteriores utilizaremos la molécula de H$_2$ como ejemplo y abajo tenemos el ejemplo de input.
+
+\begin{verbatim}
+$RunGauss
+%nproc=1
+%Chk=h2
+#RHF / STO-3G gfinput pop=full freq
+[línea en blanco]
+Cálculo de la molécula de hidrogeno 
+[línea en blanco] 
+0,1
+H
+H 1 hh2
+[línea en blanco]
+hh2 0.7122
+\end{verbatim}
+
+Comparando con el input de la optimización de la geometría, ahora hay dos diferencias. La primera es que, ahora ya no queremos hacer la optimización, sino el cálculo de frecuencias. Para eso, en vez de poner \textit{opt} tenemos que poner \textit{freq}. Por otra parte, en la optimización de la geometría, al principio no necesitábamos la distancia exacta H-H, porque el cálculo nos encuentra esta distancia óptima. Sin embargo, en el cálculo de frecuencias, la geometría usada tiene que ser la óptima, porque esa geometría corresponde a un mínimo de la energía electrónica. Por eso, ahora la distancia H-H tiene que ser la distancia óptima que hemos calculado, 0.7122\r{A} y no 0.3\r{A}.
+
+
+\subsection{Output de Gaussian del cálculo de frecuencia}
+
+Los modos de vibración son 3N-5 por lo tanto, en el caso de las  moléculas diatómicas, sólo hay 1. Utilizando el input descrito en la sección anterior, si ejecutamos Gaussian, nos calculará las frecuencias. Con el programa Molden podemos ver el modo de vibración (cómo vibran los núcleos) y la frecuencia. En este caso la frecuencia es 5481.7cm$_{-1}$. Como era de esperar, es positiva ya que corresponde a un mínimo.
+
+
+\section{El espectro infrarrojo}
+
+El espectro infrarrojo está relacionado con las frecuencias de los modos de vibración de la molécula. ¿Cuántos modos de vibración hay? En una molécula lineal 3N-5 y, en las otras 3N-6. Los modos de vibración pueden ser de diferentes clases. Por una parte, los que provocan cambios de las distancias entre los átomos y, por otra parte, los que provocan cambios en los ángulos. Si trabajamos en la aproximación armónica, la frecuencia de los modos de vibración se calcula como aparece abajo. 
+
+\begin{equation}
+    \bar{\nu}_e = \frac{1}{2\pi c}\sqrt{\frac{k}{\mu}}
+\end{equation}
+
+donde k es la constante de fuerza y siendo la segunda derivada de la superficie de energía potencial. Una vez calculado $\bar{\nu}_e$, podemos calcular los niveles de energía vibracional:
+
+\begin{equation}
+    G(\upsilon) = \left(\frac{1}{2}+\upsilon\right)\bar{\nu}_e
+\end{equation}
+
+Así, podemos calcular la diferencia de energía entre los niveles. Y esto es el que se mide experimentalmente al hacer el espectro infrarrojo. Por lo tanto, al calcular la frecuencia el espectro infrarrojo se consigue directamente. En el caso de H$_2$, como tiene el momento dipolar nulo, no tiene espectro infrarrojo. Con Molden, se puede ver que no aparece nada en el espectro infrarrojo.
+
+
+\section{Termoquímica}
+
+Una vez calculadas las frecuencias, podemos conseguir las energías vibracional, rotacional y la translacional de la molécula en función de la temperatura. Cuando T = 0 K, la energía total de la molécula es:
+
+\begin{equation}
+    E_{Tot} = E_e+E_{vib}
+\end{equation}
+
+La energía rotacional y la translacional son 0 y todas las moléculas estarían en el modo vibracional fundamental. Sin embargo, al subir la temperatura, empiezan a poblar los niveles vibracionales superiores y además de esto, la energía rotacional y translacional no es 0. Gaussian nos da cuál es la energía de la molécula a temperatura ambiente y se calcula así:
+
+\begin{equation}
+    E_{Tot} = E_e+E_{vib}+E_{rot}+E_{trans}
+\end{equation}
+
+EL que se mide experimentalmente no son las diferencias de energía, se miden las diferencias de la entalpía o la energía libre de Gibbs. ¿Qué es la entalpía?
+
+\begin{equation}
+    H = E_{Tot}+RT
+\end{equation}
+
+¿Y la energía libre de Gibbs?
+
+\begin{equation}
+   G = H-TS
+\end{equation}
+
+Gaussian nos calcula todo esto. 
+
+Por lo tanto, al hacer el cálculo de frecuencia, conseguimos mucha información:
+
+\begin{list}{\textbullet}
+\item La energía i propiedades electrónicas (el momento dipolar, el gap HOMO-LUMO, la carga, etc.).
+\item Podemos calcular si estamos en un mínimo o un máximo de la Superficie de energía Potencial.
+\item Calcular el espectro infrarrojo.
+\item Conseguir las energías termoquímicas.
+\end{list}
+
+
 \chapter{Espectro rotovibracional del CO}
+
+\section{Un poco de teoría}
+En las moléculas, al contrario de lo que sucede con los átomos,
+tenemos que tener en consideración más de un núcleo. La 
+ecuación de Schrödinger \hlred{ezin du askatu}. Por este motivo
+debemos hacer una primera aproximación, llamada de
+Born-Oppenheimer, de acuerdo con la cual desacoplamos el
+movimiento de electrones y núcleos. Por consiguiente, en 
+primer lugar resolvemos la parte electrónica de la ecuación,
+y usamos los valores así obtenidos a modo de potencial en la
+parte nuclear de la ecuación. Para los núcleos debemos 
+considerar tres tipos de movimientos: translacional (sin
+cuantizar), rotacional (cuantizado por el número cuántico $J$)
+y vibracional (cuantizado en el número cuántico $v$).
+
+Para describir el movimiento rotacional utilizamos la
+aproximación del rotor rígido, con una corrección debida
+a la distorsión centrífuga. Los niveles energéticos 
+rotacionales resultantes son
+\begin{equation}
+    F(J)=B_eJ(J+1) - D_eJ^2(J+1)^2
+\end{equation}
+Para resolver la parte correspondiente al movimiento 
+vibracional usamos la aproximación armónica con una 
+corrección anarmónica,
+\begin{equation}
+    G(v)=\bigg(v+\frac{1}{2}\bigg)\tilde{\nu}_e - 
+    \bigg(v+\frac{1}{2}\bigg)^2\chi_e\tilde{\nu}_e
+\end{equation}
+Estos dos movimientos, a menudo están acoplados. Cuando
+el acoplamiento es pequeño podemos tratarlos de manera
+independiente, pero si no es así debemos hablar de 
+niveles energéticos rotovibracionales
+\begin{equation}
+    \begin{split}
+        S(v,J)=&\bigg(v+\frac{1}{2}\bigg)\tilde{\nu}_e − 
+        \bigg(v+\frac{1}{2}\bigg)^2\chi_e\tilde{\nu}_e +
+        B_eJ(J+1) - \\ & DJ^2(J+1)^2 -
+        \alpha_e\bigg(v+\frac{1}{2}\bigg)J(J+1)
+    \end{split}
+\end{equation}
+En las ecuaciones anteriores usamos una serie de contantes:
+$\nu_e$ es la frecuencia vibracional, $\tilde{\chi}_e$ es la
+constante armónica, $B_e$ es la constante rotacional, $D$
+es la constante correspondiente a la distorsión centrífuga 
+y $\alpha_e$ es la constante de acoplamiento rotovibracional.
+
+\section{Cálculo teórico de espectros}
+Para simular los espectros rotovibracionales usaremos 
+el programa TheoEspRotBib.py. Se trata de un programa
+escriton en Python y para ejecutarlo debemos teclear
+\begin{verbatim}
+    $> python2.7 TheoEspRotBib.py
+\end{verbatim}
+El programa nos pedirá una serie de valores
+\small{
+\begin{verbatim}
+    Molecularen izena: "CO"
+    Konstante Errotazionala (cm-1): 1.9369
+    Distortzio Zentrifugoa (cm-1): 0.000006
+    Frequentzia Bibrazionala (cm-1): 2169.86
+    anharmonizitate konstantea: 0.00612
+    Akoplamendu roto-bibrazionalaren Kte (cm-1): 0.018
+    Jmax-ren balioa: 30
+\end{verbatim}
+}
+El programa generará el siguiente gráfico  
+\begin{figure}
+    \centering
+    \includegraphics{figs/Figure_1.png}
+    \caption{Espectro rotovibracional del monóxido de carbono.}
+    \label{fig:espectro}
+\end{figure}
+
+Además, el programa generará dos ficheros: \texttt{data} y 
+\texttt{data\_nuRP}. El primero de ellos contiene los datos 
+del espectro, que podemos visualizar con el programa 
+\texttt{xmgrace}. El archivo \texttt{data\_nuRP} permite 
+comparar con las posiciones de los picos experimentales.
+Data cuenta de que cada vez que se ejecuta el programa 
+se generan nuevos archivos \texttt{data} y \texttt{data\_nuRP}
+de tal manera que para conservar los resultados te puede 
+interesar cambiar el nombre de estos archivos.
 
 \chapter{Estados excitados del CO (espectro ultravioleta-visible)}
 
