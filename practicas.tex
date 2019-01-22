@@ -348,8 +348,7 @@ explicitamente de la siguiente manera
 \end{equation}
 En los siguientes capítulos veremos qué valores adoptan
 estos términos en caso tanto de átomos individuales
-como en el caso de moléc
-las.
+como en el caso de moléculas.
 
 \chapter{Átomos}
 \section{Método de Hartree Fock para átomos}
@@ -472,12 +471,15 @@ el cálculo haya terminado correctamente, en cuyo caso aparece la
 línea "\texttt{Normal termination of Gaussian 03}" en su 
 última línea. Algo más arriba encontramos un resumen del
 cálculo realizado.
+\begin{small}
 \begin{verbatim}
 1\1\GINC-CLEANDER\SP\ROHF\STO-3G\H1(2)\POBMABEJ\01-Jan-2018\0\\
 #ROHF / STO-3G gfinput pop=full\Calculo del atomo de hidrogeno\\0,2\H\\
 Version=AM64L-G03RevD.01\State=2-A1G\HF=-0.4665819\
 RMSD=0.00e+00\Thermal=0.\Dipole=0.,0.,0.\PG=0H[O(H1)]\\@
 \end{verbatim}
+\end{small}
+
 Es importante notar la línea en la que se nos muestra el resultado
 de nuestro cálculo, \texttt{HF=-0.4665819}, correspondiente
 al cálculo tal y como resulta con el método y la base utilizados.
@@ -508,18 +510,14 @@ y en el menú correspondiente escogeremos "\texttt{Density-mode}".
     \label{tb:commands}
 \end{table}
 
-
 \chapter{Moléculas: Introducción}
 \section{Método de Hartree Fock para moléculas}
 \subsection{Planteamiento de las ecuaciones}
-
 Recordemos primero la ecuación que necesitamos utilizar:
-
 \begin{equation}
     (\hat{T}_N + \hat{V}_{NN} + \hat{T}_e + \hat{V}_{ee} +\hat{V}_{eN})\Psi_\mathrm{tot}(\{R_\alpha\},\{r_i\}) 
     = E_\mathrm{tot}\Psi_\mathrm{Tot}(\{R_\alpha\},\{r_i\}) 
 \end{equation}
-
 En el caso de las moléculas, a diferéncia de los atómos,  $\hat{V}_{NN}\neq0$ porque tenemos más de un núcleo. Esto dificulta las cosas. Ahora tenemos que hacer una aproximación para resolver esta ecuación que no haciamos con los átomos. Los núcleos, al tener la masa mucho más grande que los electrones, se moverán más lentos. Supondremos que mientras los electrones hacen su movimiento, los núcleos no se mueven. Así, supondremos que el movimiento de los electrones y de los núcleos está desacoblado. Esta aproximación se denomina aproximación de Born-Oppenheimer, y en un potencial creado por los electrones se moverían los núcleos en el mismo sitio. 
 
 Por lo tanto, ¿Cómo quedan, en este caso las ecuaciones que es necesario resolver? Primero, tendremos que resolver la ecuación del electrón. ¿Cómo queda esta ecuación?
@@ -527,26 +525,21 @@ Por lo tanto, ¿Cómo quedan, en este caso las ecuaciones que es necesario resol
 \begin{equation} 
     \hat{H}_\mathrm{e}\Psi_\mathrm{e}=E_\mathrm{e}\Psi_\mathrm{e} 
 \end{equation}
-
 \begin{equation}
     (\hat{T}_\mathrm{e} + \hat{V}_\mathrm{ee} +\hat{V}_{eN})\Psi_\mathrm{e}(\{r_i\};\{R_\alpha\})
     = E_\mathrm{e}\{R_\alpha\}\Psi_\mathrm{e}(\{r_i\};\{R_\alpha\})
 \end{equation}
-
 Parecida a la que teníamos para los átomos. Pero ahora, la función de onda electrónica y la energía electrónica dependen de las posiciones de los núcleos. Así, la energía electrónica calculada nos introduce en la ecuación nuclear como potencial, y la ecuación que necesitámos resolver para los núcleos nos quedará así:
-
 \begin{equation}
     (\hat{T}_\mathrm{N} + \hat{V}_\mathrm{NN} +E_\mathrm{e})\Psi_\mathrm{N}(\{R_\alpha\})
     = E_\mathrm{Tot}\Psi_\mathrm{N}(\{R_\alpha\})
 \end{equation}
-
 Así, introducimos el concepto de Superfície de Energia Potencial $V\{R_\alpha\}=(\hat{V}_\mathrm{NN}\{R_\alpha\}+E_\mathrm{e}\{R_\alpha\})$. Los núcleos se mueven según el potencial creado por los electrones y los otros núcleos.
 
 \subsection{Soluciones para las ecuaciones}
 En el caso de los átomos, solo necesitábamos  resolver la ecuación que correspondía a los electrones y conseguíamos así, la función de onda electrónica. En el caso de las moléculas, se deben resolver dos ecuaciones, la electrónica y la nuclear.
 
 Como en el caso de los átomos, resolvemos la ecuación electrónica utilizado el método Hartree-Fock. La diferencia principal es que ahora los orbitales serán orbitales moleculares y no orbitales atómicos. Los Orbitales Moleculares son Combinaciones Lineales de los Orbitales Atómicos, y están deslocalizados a lo largo de la molécula y no localizados, como en el modelo de Lewis. Por lo tanto, la función de onda electrónica para una molécula de capa cerrada es,
-
 \begin{equation}
     \psi_e^{HF}=\frac{1}{\sqrt{N}} 
     \begin{vmatrix}
@@ -557,19 +550,16 @@ Como en el caso de los átomos, resolvemos la ecuación electrónica utilizado e
     \phi_1(N) & \bar{\phi}_1(N) & \phi_2(N) & \bar{\phi}_2(N)& ...& \phi_{N/2}(N) & \bar{\phi}_{N/2}(N)
     \end{vmatrix}
 \end{equation}
-
 como en el ejemplo de los átomos. Pero ahora los orbitales no son orbitales atómicos, como teníamos antes, sino orbitales moleculares. 
 
 De la ecuación a resolver, obtenemos la función de onda del estado fundamental y la energía electrónica. Sustituimos la energía electrónica en la ecuación de Schrödinger nuclear. No es explícito, pero resuelta esta ecuación, se consiguen las vibraciones y los modos de rotación de los núcleos. Los niveles vibracionales y las rotaciones se pueden calcular así, y por medio de diferencias de energía, microondas, infrarrojo y los espectros raman. Teniendo en cuenta los resultados electrónicos y nucleares, los espectros UV/Vis también se pueden calcular.
 
 \section{Input del programa Gaussian para moléculas}
-
 Como en el caso de los átomos, podemos utilizar el programa Gaussian para hacer los cálculos de las moléculas. En estos cálculos resolveremos las ecuaciones discutidas en la sección 3.1. El input o fichero de entrada es parecido al fichero utilizado en el caso de los átomos. Ahora tendremos que especificar la geometía de la molécula al programa. Los núcleos estarán fijos en la geometría expresada por nosotros, y el programa nos resolverá ecuación electrónica.
 
 ¿Cómo se especifica la geometría de una molécula? Hay dos formas distintas. Dando las coordenadas cartesianas de la molécula o utilizando la z-matrix. En la z-matrix se utilizan coordinadas internas, y cuando las coordinadas cartesianas son desconocidas, es la forma más adecuada para concretar la geometría.
 
 \subsection{Input de la molécula H$_2$}
-
 \begin{verbatim}
 $RunGauss
 %nproc=1
@@ -596,13 +586,14 @@ Los resultados de Guassian los tenemos en el fichero Output o fichero de salida,
 \end{verbatim}
 
 Así, cuando el cálculo termina creará el fichero h2.log, y en este fichero nos aparecerá toda la información. ¿Cuál es la información que nos interesa? En el caso del átomo hidrogeno buscamos la energía electrónica y la configuración electrónica. Esta vez, buscaremos información parecida. En las secciones siguientes veremos cómo conseguir más información, por ejemplo, el dipolo de la molécula, las cargas de los átomos, etc. Primero, tenemos que ver que nuestro cálculo ha terminado bien. Así, tenemos que ir al final del fichero, y las últimas líneas tienen que ser $"\texttt{Normal termination of Gaussian 03...}"$. Así pues, el cálculo ha terminado bien. Un poco más arriba, aparecen resumidos los resultados en un párrafo:
-
+\begin{small}
 \begin{verbatim}
 1\1\GINC-CLEANDER\SP\RHF\STO-3G\H2\POBMABEJ\05-Jan-2010\0\\#rhf/STO-3G
 gnput pop=full\\Calculo de la molecula de hidrogeno\\0,1\H\H,1,0.7\\
 Version=AM64L-G03RevD.01\State=1-SGG\HF=-1.1161514-\RMSD=0.000e+00\
 Thermal=0.\Dipole=0.,0.,0.\PG=D*H [C*(H1.H1)℄\\@
 \end{verbatim}
+\end{small}
 
 La energía electrónica de la molécula de H$_2$, en la geometría que hemos expresado es \texttt{HF=-1.1161514} u.a. Para ver los Orbitales Moleculares, como los orbitales atómicos, utilizaremos el programa MOLDEN. Tenemos que darnos cuenta que ahora en vez de orbitales atómicos se consiguen los orbitales moleculares, y que estos son las combinaciones lineales de los orbitales atómicos.
 
@@ -612,7 +603,7 @@ Debido a la aproximación Born-Oppenheimer, sabemos que a cada geometría difere
 
 \begin{table}[h!]
 \centering
-	\scriptsize
+	\small
 	\begin{tabular}{ll|ll|ll}
 	\toprule
 		R(C-O) & E$_e$ & R(C-O) & E$_e$ & R(C-O) & E$_e$ \\
@@ -633,18 +624,14 @@ Debido a la aproximación Born-Oppenheimer, sabemos que a cada geometría difere
 \end{table}
 
 Al completar esta tabla, los resultados se pueden representar con el programa XMGRACE. Para hacer eso, estos resultados se tienen que guardar en un fichero (por ejemplo, h2$\_{geom}$.dat) y después ejecutar desde la línea de comando:
-
 \begin{verbatim}
     $> xmgrace h2\_geom.dat
 \end{verbatim}
-
 Una vez hecho esto, conseguríamos un gráfico como el que se muestra en la imagen de abajo:
-
-\begin{figure}
+\begin{figure}[h!]
 \centering
-\includegraphics[scale=0.7]{PES_H2.png}
+\includegraphics[scale=0.5]{PES_H2.png}
 \end{figure}
-
 
 \section{Configuración electónica}
 Los Orbitales Moleculares son combinaciones lineales de los Orbitales Atómicos. 
@@ -968,7 +955,87 @@ de tal manera que para conservar los resultados te puede
 interesar cambiar el nombre de estos archivos.
 
 \chapter{Estados excitados del CO (espectro ultravioleta-visible)}
+\section{Un poco de teoría}
+Las transiciones entre niveles electrónicos son más energéticas
+que las transiciones entre niveles rotovibracionales. Para que
+estas transiciones sean posibles, la energía de la radiación 
+incidente debe ser mayor, o lo que es lo mismo, su longitud de
+onda debe ser más corta. Generalmente, en las transiciones 
+electrónicas, se produce un salto de un electrón entre 
+un orbital ocupado a otro no ocupado. Estas transiciones pueden
+ser de diferentes tipos, dependiendo del tipo de orbital de origen 
+y de destino, lo cual a su vez depende del tipo de molécula y de su
+entorno.
 
+Por ejemplo, las transiciones $\pi\rightarrow\pi^\star$ 
+corresponden a la excitación de un electrón de un orbital 
+$\pi$ de un enlace doble C=C para llegar a un orbital 
+$\pi^\star$. En el caso de un enlace doble no conjugado,
+la energía  es de 7 eV, y la radiación correspondiente
+es de 180 nm (ultravioleta). En el caso de los enlaces
+conjugados, la transición $\pi\rightarrow\pi^\star$
+la longitud de onda es algo superior. Si un sistema
+conjugado es grande, la transición puede ocurrir en
+el visible. Algunos ejemoplos son la fotosíntesis y 
+la isomerización. 
+
+En esta práctica de laboratorio, y en las prácticas de 
+ordenador, vamos a ver transiciones $n\rightarrow\pi^\star$,
+en particular la correspondiente a la molécula de C=O
+a $\sim$290 nm. Investigaremos la transición 
+$n\rightarrow\pi^\star$ en acetona, y cómo cambia la 
+transición cuando usamos diferentes sustituyentes o 
+disolventes.
+
+\section{Metodología}
+Para calcular estas transiciones, usaremos dos métodos.
+Por un lado, estimaremos el \textit{gap} HOMO-LUMO y por
+otro usaremos un método más preciso denominado \textit{
+Time Dependent Density Functional Theory} (TDDFT).
+
+\section{Resultados y discusión}
+\subsection{Efecto del disolvente}
+Vamos a disolver la acetona en cinco disolventes diferentes
+y mediremos sus transiciones electrónicas ($\lambda_{max}$).
+Con los datos rellenaremos la tabla y explicaremos las
+diferencias debidas a la naturaleza del disolvente.
+
+\begin{table}[h!]
+\centering
+    \begin{tabular}{|l|c|c|c|c|}
+    \hline
+     & $\lambda_{max}$ & E(HOMO) & E(LUMO) &  $\Delta$HOMO-LUMO    \\
+     \hline
+    Ciclohexano &  & & &\\
+    Acetonitrilo &  & & &\\
+    Cloroformo  & &  & &\\
+    Etanol  & & & &\\
+    Agua  & & & &\\
+\hline
+\end{tabular}
+\end{table}
+
+\subsection{Efecto del sustituyente}
+Seleccionando el ciclohexano como disolvente, vamos a probar
+cinco derivados de la acetona para medir espectroscópicamente
+sus transiciones electrónicas. Con los datos, rellenaremos la
+siguiente tabla y explicaremos las diferencias observadas 
+entre sustituyentes.
+
+\begin{table}[h!]
+\centering
+    \begin{tabular}{|l|c|c|c|c|}
+    \hline
+     & $\lambda_{max}$ & E(HOMO) & E(LUMO) &  $\Delta$HOMO-LUMO    \\
+     \hline
+    Acetona &  & & &\\
+    Cloruro de acetilo &  & & &\\
+    Acetofenona  & &  & &\\
+    Ácido acético  & & & &\\
+    Metil-etil-cetona  & & & &\\
+\hline
+\end{tabular}
+\end{table}
 
 
 %\begin{thebibliography}{}
