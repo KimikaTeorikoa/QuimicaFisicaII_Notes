@@ -1,0 +1,141 @@
+\documentclass[addpoints,spanish, 12pt,a4paper]{exam}
+% Hasta donde pone \begin{document} es lo que se conoce como preámbulo (preamble)
+
+%% Esto es de la clase exam. Si dejamos sin comentar \printanswers, se mostraran las soluciones. 
+%% Si la comentamos y dejamos sin comentar \noprintanswers, pues no se muestran las soluciones.
+\printanswers
+%\noprintanswers
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Idioma y codificación de texto
+\PassOptionsToPackage{T1}{fontenc} 
+\usepackage{fontenc} 
+\usepackage[utf8]{inputenc}
+% Cargar babel y configurar para español
+\usepackage[spanish,es-lcroman, es-tabla, es-noshorthands]{babel}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\usepackage{mathptmx}
+\usepackage{amsmath}
+\usepackage{mathptmx}% http://ctan.org/pkg/mathptmx
+%\usepackage[osf,sc]{mathpazo}
+\usepackage[scaled=0.9]{helvet}
+\renewcommand{\familydefault}{\sfdefault}
+
+
+\usepackage{graphicx}
+%\usepackage[colorinlistoftodos]{todonotes}
+%\usepackage[colorlinks=true, allcolors=blue]{hyperref}
+
+%\renewcommand{\sfdefault}{phv}
+
+%%%%%%% Paquetes varios y alguna opción
+\usepackage{graphicx} % Paquete necesario para incluir imágenes, cambiarles el tamaño, etc.
+\usepackage{enumitem} % Para poder configurar las listas
+\everymath{\displaystyle} % Esto es para que las expresiones se vean... grandes, que resulta diferente de si las queremos entre líneas.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%% Cosas a configurar de la clase EXAM %%%%
+
+\author{David De Sancho}
+\pagestyle{headandfoot}
+\runningheadrule
+\extraheadheight{3cm}
+\firstpageheader{}
+    {\hspace*{10cm}\includegraphics[height=2cm]{figs/logotipo_upv_ehu.jpg}\\ 
+    \textbf{Química Física II}\\
+    Examen de los Temas 1 al 4\\
+    29 de Mayo de 2019
+    }
+{}
+
+\runningheader{\small Química Física II, 1$^\mathrm{er}$ parcial}{}
+{\small 20 de Noviembre, 2018}
+\runningfooter{}{{\tiny  }}{Página \thepage\ de \numpages}
+\pointpoints{punto}{puntos}
+\bonuspointpoints{punto extra}{puntos extra}
+\hqword{Pregunta}
+\hpword{Puntos}
+\hsword{Calificación}
+\renewcommand{\solutiontitle}{\noindent\textbf{Solución:}\par\noindent}
+\pointformat{(\emph{\thepoints})}
+\bonuspointformat{(\emph{\thepoints})}
+\pointsinrightmargin % Para poner las puntuaciones a la derecha. Se puede cambiar. Si se comenta, sale a la izquierda.
+\extrawidth{-3cm} %Un poquito más de margen por si ponemos textos largos.
+\marginpointname{ \emph{\points}}
+%\bracketedpoints
+
+%%%%%%%%%%%%%%%%%%%%%% FIN DEL PREÁMBULO %%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+\vspace{0.1in} %espacio vertical
+\makebox[\textwidth]{Nombre:\enspace\hrulefill}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Tabla para anotar la calificación
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{center}
+    %\resizebox{\textwidth}{!}{\gradetable[h][questions]} % Esto es por si la tabla sale muy grande, para ajustarla al ancho
+    \gradetable[h][questions]
+\end{center}
+\vspace{0.1in} % Espacio vertical
+
+
+\begin{questions} % Comenzamos con las preguntas del examen
+% Entre corchetes se pone la puntuación de cada una
+
+    %Pregunta con apartados
+    \question[2\half] Una de las observaciones que llevaron al descubrimiento
+    del efecto fotoeléctrico fue que, al incidir con luz sobre superficies
+    de diferentes materiales, la energía cinética de los fotoelectrones 
+    dependía linealmente con la frecuencia de la radiación incidente, $\nu$.
+    ¿Cómo explica esta observación? 
+    ¿A partir de qué valor de la frecuencia empiezan a emitirse 
+    fotoelectrones?
+
+    \newpage
+    
+   % \question Calcula:
+   %     \begin{parts}
+   %         \part[1] $2+2=$
+   %         \part[2] $\frac{1}{2}+\frac{3}{4}=$ 
+   %     \end{parts}
+   % \begin{solution} % Aquí ponemos la solución, es opcional.
+   %     \begin{parts}
+   %         \part $4$
+   %         \part $\frac{5}{4}$ 
+   %     \end{parts}
+   % \end{solution}
+    
+    \question[2\half] Las funciones $e^{ikx}$ y $e^{-ikx}$ son funciones propias
+    del operador momento lineal, 
+    \begin{equation*}
+        \hat{p}_x=-i\hbar \frac{\partial}{\partial x}
+    \end{equation*}
+    ¿Cuáles son sus valores propios? ¿A qué sistema corresponden? Cualquier combinación lineal de estas funciones, ¿es también función
+    propia de $\hat{p}_x$?
+    \newpage 
+    
+    
+    \question[2\half] 
+     Un rodamiento de masa 1 g se encuentra en una caja  de potencial de
+     anchura 10 cm moviéndose a una velocidad de 1 cm/s. 
+     (a) Calcula el número cuántico. 
+     (b) Muestra cuál es el espaciamiento entre dos niveles para el valor del 
+     número cuántico obtenido en el apartado anterior. 
+     (c) ¿Qué principio ilustran los resultados?
+    \newpage
+    
+    \question[2\half] Las primeras funciones de onda del oscilador armónico
+    son 
+    \begin{align*}
+        & \psi_0(x)=\bigg(\frac{\alpha}{\pi}\bigg)^{1/4}e^{-\alpha x^2/2} \\
+        & \psi_1(x)=\bigg(\frac{4\alpha^3}{\pi}\bigg)^{1/4}xe^{-\alpha x^2/2}
+    \end{align*}
+    Demuestra que las funciones son ortogonales entre sí.
+    \newpage    
+
+
+\end{questions}
+
+\end{document}
