@@ -19,8 +19,70 @@ partículas que componen el sistema y del tiempo ($t$).
 En Mecánica Cuántica, por tanto, el concepto de 
 trayectoria es remplazado por la \textbf{función de
 onda}, que contiene toda la información dinámica 
-sobre el sistema. 
-\section{Obervables y operadores}
+sobre el sistema.
+
+\section{Interpretación de la función de onda}
+Para desarrollar una intuición sobre el significado
+de la función de onda es útil recurrir a la 
+denominada \textbf{interpretación de 
+Born}, que también enunciamos en la forma de 
+postulado.
+\begin{theorem} 
+La probabilidad de que una partícula se encuentre en 
+un volumen $\tau$ en el punto $r$ es proporcional
+a $|\psi(r)|^2d\tau=\psi^\star \psi d\tau$
+\end{theorem}
+El cuadrado de la función de onda es por tanto una
+\textbf{densidad de probabilidad}. Y si tomamos la
+integral de esta densidad en una pequeña region 
+$d\tau$ del espacio, obtendremos la probabilidad de
+encontrar el sistema en esa región $d\tau$. En la 
+medida en que la suma de todas las probabilidades
+debe ser igual a la unidad, la función de onda debe 
+cumplir una condición de normalización,
+\begin{equation}
+    N^2\int_{-\infty}^\infty\psi^\star\psi dx=1
+    \label{eq:norm}
+\end{equation}
+
+En ocasiones, para el caso tridimensional, puede 
+ser más conveniente escribir esta condición de 
+normalización en coordenadas esféricas, es decir,
+en función del radio $r$, la colatitud $\theta$
+y el ángulo azimutal $\phi$. La interconversión
+entre coordenadas cartesianas y esféricas es 
+trivial, 
+\begin{equation}
+  \begin{array}{@{}ll@{}}
+    x = & r\sin\theta\cos\phi \\
+    y = & r\sin\theta\sin\phi \\
+    z = & \cos \theta
+  \end{array}
+\end{equation}
+de tal manera que la integral normalizada que 
+expresábamos en una sóla dimensión en la 
+Ecuación~\ref{eq:norm} se puede reescribir usando
+$d\tau=r^2\sin\theta drd\theta d\phi$ y modificando
+los límites de integración de la siguiente manera
+\begin{equation}
+    \int_\infty^\infty\psi^\star\psi d\tau=
+    \int_0^\infty\int_0^\pi\int_0^{2\pi}\psi^\star\psi r^2\sin\theta drd\theta d\phi
+\end{equation}
+
+La interpretación de Born y la ecuación de Schrödinger
+que, como veremos más adelante, es una ecuación
+diferencial de segundo orden, introducen una serie de
+requisitos para las funciones de onda aceptables:
+\begin{itemize}
+    \item Debe ser unívoca, es decir, no debe 
+    estar definida con más de un valor en cada punto.
+    \item Debe tener un cuadrado integrable.
+    \item Debe ser continua.
+    \item Debe ser derivable.
+\end{itemize}
+
+
+\section{Observables y operadores}
 \begin{theorem}
 Los observables se representan mediante operadores 
 Hermíticos.
@@ -133,65 +195,7 @@ de la combinación lineal. El promedio tras un gran número
 de observaciones lo da el valor esperado, $\langle
 \Omega\rangle$.
 
-\section{Interpretación de la función de onda}
-Para desarrollar una intuición sobre el significado
-de la función de onda es útil recurrir a la 
-denominada \textbf{interpretación de 
-Born}, que también enunciamos en la forma de 
-postulado.
-\begin{theorem} 
-La probabilidad de que una partícula se encuentre en 
-un volumen $\tau$ en el punto $r$ es proporcional
-a $|\psi(r)|^2d\tau=\psi^\star \psi d\tau$
-\end{theorem}
-El cuadrado de la función de onda es por tanto una
-\textbf{densidad de probabilidad}. Y si tomamos la
-integral de esta densidad en una pequeña region 
-$d\tau$ del espacio, obtendremos la probabilidad de
-encontrar el sistema en esa región $d\tau$. En la 
-medida en que la suma de todas las probabilidades
-debe ser igual a la unidad, la función de onda debe 
-cumplir una condición de normalización,
-\begin{equation}
-    N^2\int_{-\infty}^\infty\psi^\star\psi dx=1
-    \label{eq:norm}
-\end{equation}
 
-En ocasiones ara el caso tridimensional puede 
-ser más conveniente escribir esta condición de 
-normalización en coordenadas esféricas, es decir,
-en función del radio $r$, la colatitud $\theta$
-y el ángulo azimutal $\phi$. La interconversión
-entre coordenadas cartesianas y esféricas es 
-trivial, 
-\begin{equation}
-  \begin{array}{@{}ll@{}}
-    x = & r\sin\theta\cos\phi \\
-    y = & r\sin\theta\sin\phi \\
-    z = & \cos \theta
-  \end{array}
-\end{equation}
-de tal manera que la integral normalizada que 
-expresábamos en una sóla dimensión en la 
-Ecuación~\ref{eq:norm} se puede reescribir usando
-$d\tau=r^2\sin\theta drd\theta d\phi$ y modificando
-los límites de integración de la siguiente manera
-\begin{equation}
-    \int_\infty^\infty\psi^\star\psi d\tau=
-    \int_0^\infty\int_0^\pi\int_0^{2\pi}\psi^\star\psi r^2\sin\theta drd\theta d\phi
-\end{equation}
-
-La interpretación de Born y la ecuación de Schrödinger
-que, como veremos en la siguiente sección, es una ecuación
-diferencial de segundo orden, introducen una serie de
-requisitos para las funciones de onda aceptables:
-\begin{itemize}
-    \item Debe ser unívoca, es decir, no debe 
-    estar definida con más de un valor en cada punto.
-    \item Debe tener un cuadrado integrable.
-    \item Debe ser continua.
-    \item Debe ser derivable.
-\end{itemize}
 
 \section{La ecuación de Schrödinger}
 \begin{theorem}
@@ -243,6 +247,12 @@ es
 \begin{equation}
     \Psi(q,t)=\psi(q)\exp(-iEt/\hbar)
 \end{equation}
+Si obtenemos $\Psi(q,t)^2$ veremos que las funciones para un
+estado estacionario tienen una energía definida 
+y una densidad de probabilidad constante en el tiempo.
+En un estado estacionario podemos medir todos y cada uno de los 
+operadores que conmuten con el hamiltoniano. Estos son el 
+equivalente de las constantes de movimiento de la mecánica clásica.
 
 \section{El principio de incertidumbre}
 Ahora que entendemos más a fondo el funcionamiento de los
@@ -279,7 +289,7 @@ el principio de incertidumbre relaciona los errores de dos
 \textbf{variables complementarias} de tal modo que
 \begin{equation}
 \Delta\Omega_1\Delta\Omega_2\geq
-1/2|\langle[\Delta\Omega_1,\Delta\Omega_2]\rangle|
+1/2|\langle[\Omega_1,\Omega_2]\rangle|
 \end{equation}
 donde  usamos el conmutador  $[\hat{\Omega}_1,\hat{\Omega}_2] =
 \hat{\Omega}_1\hat{\Omega}_2 -\hat{\Omega}_2\hat{\Omega}_1$.
