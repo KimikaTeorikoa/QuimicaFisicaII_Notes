@@ -104,6 +104,10 @@
 \newcommand{\blankpage}{\newpage\hbox{}\thispagestyle{empty}\newpage}
 
 \usepackage{units}
+\usepackage{amssymb}
+\usepackage{mathabx}
+
+\usepackage{csquotes}
 
 % Typesets the font size, leading, and measure in the form of 10/12x26 pc.
 \newcommand{\measure}[3]{#1/#2$\times$\unit[#3]{pc}}
@@ -1030,7 +1034,9 @@ Chemistry, 7th Edition''. Pearson.
 
 
 
-%\backmatter
+\backmatter
+\appendix
+\include{appendix}
 
 %\bibliography{sample-handout}
 %\bibliographystyle{plainnat}

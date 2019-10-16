@@ -64,18 +64,23 @@ cualquier valor y por tanto la energía no está cuantizada,
 igual que sucedía en la descripción clásica. 
 
 Asímismo podemos aplicar el operador momento lineal, 
-$\hat{p}_x$ sobre la función de onda, y obtenemos
+$\hat{p}_x$ sobre la función de onda, que no es propia
+de este operador. Sin embargo, si lo aplicamos 
+independientemente sobre cada uno de los términos
+($A\mathrm{e}^{\mathrm{i}kx}$ y $B\mathrm{e}^{-\mathrm{i}kx}$)
+obtenemos
 \begin{equation}
     p_x = \pm k\hbar
 \end{equation}
-donde las soluciones correspondientes al valor positivo 
-y negativo se corresponden con la partícula desplazándose
-hacia la izquierda o hacia la derecha en el eje $x$. Esto
-aclara el significado de los términos $A$ y $B$, en la
-medida en que dependen de cómo se ha preparado el sistema.
-En el caso de que la partícula se prepare viajando hacia
-valores positivos de $x$, entonces $B=0$; mientras que si
-viaja hacia valores negativos, $A=0$. En el caso en que
+Las soluciones correspondientes positiva y negativa 
+se corresponden con la partícula desplazándose
+hacia la izquierda o hacia la derecha en el eje $x$, 
+respectivamente. Esto aclara el significado de los 
+términos $A$ y $B$, que determinan cómo se ha preparado 
+el sistema. En el caso de que la partícula se prepare 
+viajando hacia valores positivos de $x$, entonces $B=0$; 
+mientras que si viaja hacia valores negativos, $A=0$. 
+En el caso en que
 $D=0$, la situación se complica dado que queda la función
 $\psi=C\cos(kx)$, que no es función propia del operador
 momento lineal. Sin embargo podemos expresar la función como
@@ -314,19 +319,29 @@ la derecha de la barrera. Por tanto,
     \end{align}
 \end{subequations}
 
-De nuevo podemos interpretar estos coeficientes. Nos 
-encontramos con un sistema que se mueve hacia la barrera
-con una función de onda incidente, que corresponde al 
-término $\mathrm{e}^{\mathrm{i}k}$ y por tanto tiene una
-probabilidad $|A|^2$, y puede ser reflejada por la barrera 
-con una probabilidad $|B|^2$. La barrera puede ser atravesada
-por una componente no oscilatoria y llegar hasta el otro lado
-de la misma con probabilidad $|A'|^2$. El término $|B'|^2=0$,
-pues corresponde a la partícula que se aproxima a la barrera
-por la derecha. A partir de la probabilidad de llegada de la
-onda incidente y de la onda transmitida podemos calcular
-el coeficiente de transmisión, que en el caso de tener barreras
-elevadas y anchas, se puede simplificar como
+De nuevo podemos intentar interpretar estos coeficientes 
+asumiendo que el sistema se prepara de una determinada 
+manera. Partamos de la situación en que una partícula se
+acerca hacia la barrera en le región I. Este desplazamiento
+está descrito por una función
+de onda correspondiente al término $\mathrm{e}^{\mathrm{i}kx}$ 
+y por tanto tiene una probabilidad $|A|^2$. Esta partícula
+puede ser reflejada por la barrera y desplazarse hacia la
+izquierda (término $\mathrm{e}^{-\mathrm{i}kx}$) con una 
+probabilidad $|B|^2$. Por tanto la probabilidad de que se
+refleje se podrá escribir como $R=|B^2|/|A^2|$. Asimismo,
+la barrera puede ser atravesada por una componente no 
+oscilatoria, cruzar la región II y llegar hasta el otro lado 
+de la barrera con probabilidad $|A'|^2$. El término $|B'|^2=0$
+corresponde a la partícula que se aproxima a la barrera por la 
+derecha en la región III.
+
+A partir de la probabilidad de llegada de la onda incidente
+y de la onda transmitida podemos calcular
+el \textbf{coeficiente de transmisión}, 
+    $T=|A'|^2/|A|^2$
+que en el caso de tener 
+barreras elevadas y anchas, se puede simplificar como
 \begin{equation}
     T\simeq 16\varepsilon(1-\varepsilon)\mathrm{e}^{-2\kappa L},
 \end{equation}
