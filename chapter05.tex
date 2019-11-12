@@ -1,17 +1,19 @@
 \chapter{Átomos Hidrogenoides}
-Una vez hemos descrito una serie de sistemas modelo, podemos pasar a aplicar
-sus soluciones en el estudio de sistemas relevantes para la Química.
-En primer lugar, estudiaremos átomos hidrogenoides, es decir, átomos con tan
-sólo un electrón (H, He$^+$, Li$^{2+}$, O$^{7+}$...). Son sistemas importantes
-en la medida en que para ellos podemos obtener una solución exacta para la 
-ecuación de Schrödinger.
+Una vez hemos descrito una serie de sistemas modelo, podemos
+pasar a aplicar sus soluciones en el estudio de sistemas
+relevantes para la Química. En primer lugar, estudiaremos 
+átomos hidrogenoides, es decir, átomos con tan sólo un
+electrón (H, He$^+$, Li$^{2+}$, O$^{7+}$...). La importancia
+de estos sistemas radica, en parte, en que para ellos
+podemos obtener una solución exacta para la ecuación de
+Schrödinger.
 
 En este Tema, a menudo nos resultará de utilidad expresar las 
 magnitudes en unidades atómicas, es decir, normalizando la carga, 
-la masa, la longitud, el momento angular o la energía, por los valores 
-que mostramos en la Tabla \ref{tb:au}.
+la masa, la longitud, el momento angular o la energía, por los 
+valores que mostramos en la Tabla \ref{tb:au}.
 
-\begin{table}[b!]
+\begin{table}[h!]
     \centering
     \small{}
     \begin{tabular}{|l|l|c|l|}
@@ -48,11 +50,22 @@ expresión
 donde el primer y segundo término en el lado derecho de la ecuación 
 corresponden a la energía cinética del núcleo y del electrón, 
 respectivamente, y el último término es el potencial electróstático 
-entre núcleo y electrón. Desarrollando los diferentes términos,
+entre núcleo y electrón. 
+
+La parte correspondiente a la energía cinética del núcleo la
+podremos resolver usando un modelo como el de la partícula
+libre. Por tanto, nos podemos centrar en los términos 
+correspondientes al movimiento relativo del electrón en torno
+al núcleo y la atracción entre núcleo y electrón. Desarrollando 
+los diferentes términos y usando las soluciones del Tema 4,
 obtenemos
 \begin{equation}
-    \hat{H}=-\frac{\hbar^2}{2\mu}\nabla_r^2+ \frac{\hat{l}}{2\mu r^2} - \frac{Ze^2}{4\pi \varepsilon_0r}
+    \hat{H}=-\frac{\hbar^2}{2\mu}\nabla_r^2+ \frac{\hat{l}^2}{2\mu r^2} - \frac{Ze^2}{4\pi \varepsilon_0r}
 \end{equation}
+donde el primer término en el lado derecho de la ecuación
+contiene la contribución radial del hamiltoniano, el segundo 
+término corresponde a la parte angular y el último término
+representa la interacción electrostática núcleo-electrón.
 El operador $\hat{H}$ conmuta con $\hat{l}_z$ y $\hat{l}^2$. Estos
 operadores tienen funciones propias comunes y los estados estacionarios
 se pueden caracterizar por $E$, $l^2$ y $l_z$. 
@@ -93,14 +106,10 @@ cuánticos principal ($n$) y angular ($l$), es la siguiente
 \begin{equation}
   R_{n,l} = N_{n,l}\rho^l L^{2l+1}_{n+l}(\rho)\exp(-\rho/2)
 \end{equation}
-donde $n=1,2,3...$ y $l=0,...,n-1$. 
-%\begin{equation}
-%    R_{nl}(r) = -\bigg\{ \frac{4Z^3}{n^4a^3}\frac{(n-l-1)!}{[(n+l)!]^3} %\bigg\}^{1/2} \bigg(\frac{2Zr}{na}^l\bigg)\exp\big(\frac{-Zr}{na}\big)
-%    L^{2l+1}_{n+l}\bigg(\frac{2Zr}{na}\bigg%)
-%\end{equation%}
-donde $L$ es un polinomio asociado de Laguerre. A pesar de la
-complejidad de esta función, los polinomios dependientes de $n$ 
-y $l$ son relativamente sencillos. 
+donde $n=1,2,3...$ y $l=0,...,n-1$, y $L$ es un polinomio
+asociado de Laguerre. A pesar de la complejidad de esta función,
+los polinomios dependientes de $n$ y $l$ son relativamente
+sencillos. 
 
 Mostramos las 
 funciones resultantes para los primeros números cuánticos en
@@ -112,7 +121,19 @@ mientras que el polinomio de Laguerre genera una serie de
 oscilaciones entre valores positivos y negativos, que resulta
 en la presencia de $(n-l)$ nodos. 
 
-\begin{table}[b!]
+
+Asimismo llegamos a expresiones compactas para la energía de 
+los estados ligados de los átomos hidrogenoides
+\begin{equation}
+    %E_n=-\frac{Z^2}{2n^2}\frac{\mu e'^4}{\hbar^2}=
+    %-\frac{Z^2}{2n^2}\frac{\mu e'^4}{a}= -\frac{Z^2}{2n^2}E'_h
+    E_n=-\frac{Z^2\mu e^4}{32\pi^2\varepsilon_0^2\hbar^2 n^2}
+    \label{eq:Eh}
+\end{equation}
+que dependen exclusivamente del número cuántico $n$. 
+En el caso del hidrógeno, podemos aproximar la masa reducida
+a la masa del electrón $\mu\simeq m_e$. 
+\begin{table}[h!]
     \centering
     \begin{tabular}{|c|c|c|c|}
     \hline
@@ -137,18 +158,6 @@ en la presencia de $(n-l)$ nodos.
 % y $E'_h=e'^2/a$.
     \label{tb:radial_hydrogenoid}
 \end{table}
-
-Asimismo llegamos a expresiones compactas para la energía de 
-los estados ligados de los átomos hidrogenoides
-\begin{equation}
-    %E_n=-\frac{Z^2}{2n^2}\frac{\mu e'^4}{\hbar^2}=
-    %-\frac{Z^2}{2n^2}\frac{\mu e'^4}{a}= -\frac{Z^2}{2n^2}E'_h
-    E_n=-\frac{Z^2\mu e^4}{32\pi^2\varepsilon_0^2\hbar^2 n^2}
-    \label{eq:Eh}
-\end{equation}
-que dependen exclusivamente del número cuántico $n$. 
-En el caso del hidrógeno, podemos aproximar la masa reducida
-a la masa del electrón $\mu\simeq m_e$. 
 
 \subsection{Solución de la parte angular}
 A continuación, nos centraremos en la parte angular, 
@@ -264,7 +273,7 @@ para las posibles orientaciones del vector momento angular.
 
 El efecto Zeeman resulta en una pérdida de la degeneración energética
 de los orbitales. Supongamos un estado con valores de los números 
-cuánticos $n$  y $l$. A partir de la Ecuación\ref{eq:Eh} todos los
+cuánticos $n$  y $l$. A partir de la Ecuación \ref{eq:Eh} todos los
 orbitales tendrían la misma energía. Sin embargo, dado que este estado
 tiene $2l+1$ valores de $m$, en presencia de un campo magnético estará 
 dividido en $2l+1$ niveles. 

@@ -1,11 +1,11 @@
 \chapter{Momento Angular}
 En este tema, vamos a examinar los conceptos básicos de los
 operadores momento angular y sus componentes, analizando sus
-relaciones de conmutación. Asimismo, se verán las funciones
-conocidas como armónicos esféricos, que son las funciones
-propias de la parte angular del operador de energía cinética.
+relaciones de conmutación. Asimismo, estudiaremos las
+funciones propias de la parte angular del operador 
+energía cinética, los llamados armónicos esféricos.
 
-\section{Movimiento rotacional en física clásica}
+\section{Movimiento rotacional en Mecánica Clásica}
 Desde un punto de vista clásico, para un sistema que gira 
 en un plano (es decir, en 2D), describimos el \textbf{momento
 angular} como un vector cuya magnitud nos da la velocidad 
@@ -66,14 +66,15 @@ angular, para el movimiento translacional y rotacional,
 respectivamente.
 
 \section{Descripción mecanocuántica del momento angular}
-En Mecánica Cuántica la descripción del movimiento rotacional
-implica la definición de una función de onda que reproduzca 
+En Mecánica Cuántica, para describir el movimiento 
+rotacional, definimos una función de onda que reproduzca 
 la trayectoria trazada por una partícula sobre la superficie
 de una esfera. Sobre esta función de onda pueden actuar
-una serie de operadores. El operador $\hat{l}$ no tiene 
-funciones propias, lo cual significa que no existe ningún 
-estado para el cual esté determinado. Sólo se puede determinar 
-su valor promedio. Por el contrario, sí que podemos encontrar
+una serie de operadores. El \textbf{operador momento
+angular}, $\hat{l}$, no tiene funciones propias. Por tanto,
+no hay ningún estado para el cual el momento angular 
+esté determinado. Sólo se puede determinar su valor
+promedio. Por el contrario, sí que podemos encontrar
 funciones propias como las componentes en $x$, $y$ y
 $z$ del momento angular
 \begin{equation}
@@ -94,10 +95,10 @@ que escribimos como
 \end{align}
 \end{subequations}
 
-Es importante establecer las relaciones de conmutación
-de estos operadores. En concreto, el valor de los 
-conmutadores de las distintas componentes del momento
-angular es 
+Es importante establecer las \textbf{relaciones de
+conmutación} de estos operadores. En concreto, el valor 
+de los conmutadores de las distintas componentes del 
+momento angular es 
 \begin{subequations}
     \begin{align}
         [\hat{l}_x,\hat{l}_y] = \mathrm{i}\hbar \hat{l}_z\\
@@ -180,7 +181,7 @@ de la siguiente manera
     %\frac{1}{r^2}\Lambda^2
     \nabla^2=\frac{1}{r^2}\frac{\partial}{\partial r}r^2\frac{\partial}{\partial r} + \frac{1}{r^2}\Lambda^2
 \end{equation}
-donde estamos definiendo el operador
+donde estamos definiendo el operador de Legendre
 \begin{equation}
     \Lambda^2=\frac{1}{\sin^2\theta}\frac{\partial^2}{\partial\phi^2}+
     \frac{1}{\sin\theta}\frac{\partial}{\partial\theta}\sin\theta\frac{\partial}{\partial\theta}
@@ -248,7 +249,7 @@ normalizada, tenemos que definir el valor de
 la constante $A$
 \begin{equation}
     |A|^2\int_0^{2\pi}\mathrm{e}^{-im_l\phi}\mathrm{e}^{im_l\phi}d\phi=
-    2\pi|A|^2
+    2\pi|A|^2=1
 \end{equation}
 y por tanto $|A|=(1/2\pi)^{1/2}$ y la función de onda es
 \begin{equation}
@@ -275,7 +276,9 @@ para $\Phi(\phi)$.
 
 Ahora que tenemos las dos contribuciones angulares, 
 podemos escribir la función de onda al completo,
-$Y_{l,m_l}=\Theta(\theta)\Phi(\phi)$. 
+\begin{equation}
+    Y_{l,m_l}=\Theta(\theta)\Phi(\phi)
+\end{equation}
 En este curso, nos limitaremos a decir que las 
 soluciones de la ecuación de Schrödinger son los
 \textbf{armónicos esféricos}, $Y_{l,m_l}$, 
@@ -333,14 +336,13 @@ deducir que la magnitud del momento angular en la
 descripción cuántica es $\{l(l+1)\}^{1/2}\hbar$ y que va
 a estar cuantizado con $l=0,1,2,...$
 
-Como hemos mostrado con anterioridad nuestra
-función de onda $Y_{l,m_l}=\Theta(\theta)\Phi(\phi)$
-es separable. La componente $z$ del momento angular
-$\hat{l}_z$ depende de $\phi$ (ver Ecuación \label{eq:lz})
-de modo que a partir de la expresión para $\Phi(\phi)$
-podemos calcular su valor
-\begin{equation}
+%Como hemos mostrado con anterioridad nuestra
+%función de onda $Y_{l,m_l}=\Theta(\theta)\Phi(\phi)$
+%es separable. 
+La componente $z$ del momento angular
+$\hat{l}_z$ depende de $\phi$ \begin{equation}
     l_z=m_l\hbar
+    \label{eq:lz}
 \end{equation}
 Cuando $m_l>0$ la proyección en el eje $z$ del momento
 angular  es positiva mientras que si $m_l<0$  es negativa.

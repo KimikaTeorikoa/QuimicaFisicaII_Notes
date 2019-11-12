@@ -1,1 +1,139 @@
 \chapter{Moléculas Diatómicas y Lineales}
+En este tema y en el siguiente discutiremos los aspectos 
+fundamentales de la estructura electrónica molecular. 
+La principal novedad de las moléculas con respecto a 
+los sistemas atómicos es que los electrones 
+interaccionan con varios núcleos que, a su vez, 
+se mueven. El estado del sistema depende así de las
+variables de posición de los electrones y de los 
+núcleos, lo que complica notablemente el problema. 
+Tanto es así, que ni siquiera para la molécula más sencilla se puede resolver la ecuación de Schrödinger
+de forma exacta. Por tanto el estudio de moléculas se
+basa en la utilización de diversas aproximaciones:
+\begin{itemize}
+\item La aproximación de Born-Oppenheimer: establece
+que el movimiento de núcleos y electrones se puede
+separar en virtud de su gran diferencia de masa.
+\item La teoría de enlace de Valencia: parte del 
+concepto de un par de electrones compartidos.
+\item La teoría de orbitales moleculares: se forman
+a partir de combinaciones lineales de orbitales atómicos. De modo similar al caso atómico, un espin-orbital molecular es una función de onda de la molécula de un $e^{-}$.
+\end{itemize}
+
+\section{La aproximación de Born-Oppenheimer}
+Mientras que la ecuación de Schrödinger para un átomo de hidrógeno
+se puede resolver de forma exacta, no es posible obtener una solución
+exacta para ninguna molécula, ya que incluso para la más sencilla de 
+ellas hay que resolver un problema de tres cuerpos (dos núcleos y un
+$e^{-}$). La primera aproximación que usamos es la de Born-Oppenheimer,
+propuesta por Max Born y J. Robert Oppenheimer en 1927:
+\begin{displayquote}
+    Como los núcleos, mucho más pesados que los electrones, se desplazan
+    a una velocidad relativamente más lenta, pueden considerarse fijos 
+    en relación a los electrones que llevan a cabo sus desplazamientos.
+\end{displayquote}
+Podemos considerar los núcleos fijos en una ubicación arbitraria, y 
+resolver así la ec. de Schrödinger para la función de onda de los $e^-$
+únicamente. La aproximación de Born-Oppenheimer nos permite seleccionar 
+una separación internuclear en una molécula diatómica y resolver luego 
+la ec. de Schrödinger para los $e^-$ con esa separación nuclear.
+Luego elegimos una separación diferente y repetimos el cálculo, y así
+sucesivamente. De este modo podemos explorar cómo varía la energía de la
+molécula con la longitud de enlace y obtener una curva de energía potencial 
+molecular. Se llama curva de energía potencial porque la energía cinética
+de los núcleos fijos es cero. Una vez calculada la curva se pueden
+identificar, (i) la longitud de enlace de equilibrio, $R_e$, que es la 
+separación internuclear en el punto mínimo de la curva, y (ii) la 
+energía de disociación del enlace, $D_o$, que está relacionada con el 
+valor mínimo, $D_e$.
+
+Para una molécula con $N$ núcleos ($A=1,...,N$) y $n$ electrones ($i=1,...,n$)
+podemos escribir el hamiltoniano con la siguiente expresión
+\begin{equation}
+ \begin{split}  
+    V= -\frac{\hbar^2}{2}\sum_{A=1}^N\frac{\nabla^2_A}{M_A} 
+    -\frac{\hbar^2}{2m_e}\sum_{i=1}^n
+    \nabla^2_i 
+    -\sum_{A=1}^N\sum_{i=1}^{n}\frac{Z_Ae^2}{4\pi \varepsilon_0r_{iA}} 
+    +\\\sum_{i>j}^n \frac{e^2}{4\pi\varepsilon_0r_{ij}} 
+    +\sum_{A>B}^N\frac{Z_AZ_Be^2}{4\pi \varepsilon_0R_{AB}} 
+\end{split}
+\end{equation}
+donde estamos usando la distancia
+entre electrón y núcleo, $r_{iA}=|\vec{r}_i-\vec{R}_A|$, la
+distancia interelectrónica, $r_{ij}=|\vec{r}_i-\vec{r}_j|$ y la
+distancia entre núcleos, $r_{AB}=|\vec{R}_B-\vec{R}_A|$.
+Los estados estacionarios son solución de la
+ecuación
+\begin{equation}
+    \hat{H}\Phi(\mathbf{r},\mathbf{R}) = \{
+    \hat{K}_N + \hat{K}_e 
+    +\hat{V}_{eN} 
+    +\hat{V}_{ee}
+    +\hat{V}_{NN} 
+    \}\Phi(\mathbf{r},\mathbf{R}) = E\Phi(\mathbf{r},\mathbf{R})
+\end{equation}
+Dentro de esta expresión hay tres términos, 
+\begin{equation}
+    \hat{H}_e=\hat{K}_e 
+    +\hat{V}_{eN} 
+    +\hat{V}_{ee}
+\end{equation}
+que englobamos en el denominado hamiltoniano electrónico. En la
+aproximación de Born-Oppenheimer:
+debido a la gran diferencia de masa
+entre electrones y núcleos ($me/MA << 10^{-3}$) se considera el movimiento 
+de las nubes electrónicas 
+independiente del movimiento de los 
+núcleos. Así, podemos separar la
+función de onda en una parte nuclear
+y una parte electrónica
+\begin{equation}
+    \Phi=\Psi_e\Psi_N
+\end{equation}
+Al fijar los núcleos, podemos omitir
+los términos que representa la energía
+cinética nuclear de la ecuación
+del hamiltoniano molecular
+\begin{equation}
+    (\hat{V}_{NN}+\hat{H}_{e})\Psi_e = 
+    U\Psi_e
+\end{equation}
+
+De modo que la ecuación de Schrödinger para el movimiento nuclear es
+\begin{align}
+    \hat{H}_N\psi_N(\mathbf{R})=E\psi_N(\mathbf{R})\\
+    [\hat{K}_N + U(\mathbf{R})]\psi_N(\mathbf{R}) = E\psi_N(\mathbf{R})
+\end{align}
+Así, con la aproximación de Born-Oppenheimer el cálculo de energía de un sistema molecular se puede separar en un problema electrónico y en un problema de movimiento nuclear.
+
+\section{Teoría de enlace de valencia}
+Esta teoría, desarrollada por Hetiler y London, fue la primera teoría mecanocuántica de enlace que se desarrolló. Incluye conceptos tales como el apareamiento de espin, la superposición de orbitales, los enlaces $\sigma$ y $\pi$ y la hibridación.
+Según la teoría del enlace de valencia, el enlace se forma cuando un $e^-$ de un orbital atómico de un átomo aparea su espin con el de un $e^-$ en un orbital atómico de otro átomo.
+Para comprender cómo se forma el enlace a partir de este apareamiento, vamos a analizar las funciones de onda de los dos electrones que lo forman.
+Consideraremos el enlace químico más simple posible, el de la molécula de hidrógeno, H$_2$.
+
+\subsection{Molécula de hidrógeno}
+Tenemos dos núcleos y dos electrones: 
+Orb. At. A y B → cuatro spin-orbitales: $1s_A\alpha$, $1s_A \beta$, $1s_B \alpha$, $1s_B \beta$.
+Con 2 $e^-$ y 4 spin -orbitales  tenemos 6 estados bielectrónicos. Por un lado tenemos los estados iónicos en
+los que los dos electrones están en los espinorbitales de uno u otro átomo:
+\begin{equation*}
+\begin{split}
+    1s_A\alpha(1)1s_A\beta(2)\\
+    1s_B\alpha(1)1s_B\beta(2)
+\end{split}
+\end{equation*}
+Por otro lado tenemos los estados covalentes 
+\begin{equation*}
+\begin{split}
+    1s_A\alpha(1)1s_B\alpha(2)\\
+    1s_A\alpha(1)1s_B\beta(2)\\
+    1s_A\beta(1)1s_B\alpha(2)\\
+    1s_A\beta(1)1s_B\beta(2)\\
+\end{split}
+\end{equation*}
+Heitler y London descartan los términos iónicos, que
+corresponderían a
+la configuración H$^+$-H$^-$ y sólo 
+consideran los covalentes.

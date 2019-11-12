@@ -24,7 +24,7 @@ El modelo aproximado que se utiliza para describir las propiedades
 de los electrones en los átomos se denomina \textbf{aproximación orbital}. 
 Así, suponemos en una primera aproximación que cada electrón ocupa su
 “propio” orbital. Esto nos permite escribir la función
-de onda $\psi(\mathbf{r}_1,\mathbf{r}_2,...)$ como producto de las
+de onda $\psi(\mathbf{r}_1,\mathbf{r}_2,...\mathbf{r}_N)$ como producto de las
 funciones de onda de los orbitales
 \begin{equation}
     \psi(\mathbf{r}_1, \mathbf{r}_2, ..., \mathbf{r}_N) = \psi(\mathbf{r}_1)\psi(\mathbf{r}_2)...\psi(\mathbf{r}_ N)
@@ -54,7 +54,7 @@ energía potencial para el He es la suma de tres contribuciones, dos
 negativas debidas a la atracción entre cada uno de los electrones y
 el núcleo y una positiva debida a la repulsión entre los electrones:
 \begin{equation}
-    V= -\frac{2e^2}{4\pi \varepsilon_0r_1} -\frac{2e^2}{4\pi \varepsilon_0r_2} + \frac{e^2}{4\pi \varepsilon_0r_{12}} 
+        V= -\frac{2e^2}{4\pi \varepsilon_0r_1} -\frac{2e^2}{4\pi \varepsilon_0r_2} + \frac{e^2}{4\pi \varepsilon_0r_{12}} 
 \end{equation}
 Así, el hamiltoniano tendrá la forma
 \begin{equation}
@@ -93,7 +93,7 @@ corresponde a la superposición de los estados individuales de
 cada uno de sus electrones. Dentro de la aproximación orbital, 
 podemos escribir 
 \begin{equation}
-    \psi=\psi_1\psi_2
+    \psi(\mathbf{r}_1,\mathbf{r}_2)=\psi_1(\mathbf{r}_1)\psi_2(\mathbf{r}_2)
 \end{equation}
 donde $\psi_1$ y $\psi_2$ son los estados de los electrones  
 1 y 2 respectivamente. Dado que hemos eliminado la repulsión
@@ -130,22 +130,24 @@ la función de onda tendrá que ser
 Dado que los electrones son \textbf{fermiones}, el principio de
 Pauli impone que la función de onda sea \textbf{antisimétrica}
 \begin{equation}
-    \psi_a(\mathbf{r}_1,\mathbf{r}_2)=-\psi(\mathbf{r}_2,\mathbf{r}_1)
+    \psi(\mathbf{r}_1,\mathbf{r}_2)=-\psi(\mathbf{r}_2,\mathbf{r}_1)
 \end{equation}
 
 \subsection{Partículas no interaccionantes}
 Para dos partículas que no interaccionan podemos escribir la
 ecuación de Schrödinger como
 \begin{equation}
-    \hat{H}\psi=(\hat{H_1} + \hat{H_2})\psi=E\psi
+    \hat{H}\psi=(\hat{H}_1 + \hat{H}_2)\psi=E\psi
 \end{equation}
-El hamiltoniano es la suma de dos contribuciones, una para cada electrón
-\begin{equation}
-    \hat{H}=-\frac{\hbar^2}{2m_e}\nabla_1^2 -\frac{Ze^2}{4\pi \varepsilon_0r_1} 
-    -\frac{\hbar^2}{2m_e}\nabla_2^2 -\frac{Ze^2}{4\pi \varepsilon_0r_2}
-\label{eq:h1_h2}    
-\end{equation}
-A través del método de separación de variables se llega a la siguiente solución
+%El hamiltoniano es la suma de dos contribuciones, una para cada electrón
+%\begin{equation}
+%    \hat{H}=-\frac{\hbar^2}{2m_e}\nabla_1^2 -\frac{Ze^2}{4\pi \varepsilon_0r_1} 
+%    -\frac{\hbar^2}{2m_e}\nabla_2^2 -\frac{Ze^2}{4\pi \varepsilon_0r_2}
+%\label{eq:h1_h2}    
+%\end{equation}
+La función de onda correspondiente a la partícula 1 en el orbital
+$\psi_\alpha$ y la partícula 2 en el orbital $\psi_\beta$ se puede
+escribir como
 \begin{equation}
     \psi(\mathbf{r}_1, \mathbf{r}_2) = \psi_\alpha (\mathbf{r}_1)\psi_\beta (\mathbf{r}_2)
 \end{equation}
@@ -161,14 +163,14 @@ no satisface el principio de indiscernibilidad. Mediante combinaciones
 lineales se pueden obtener funciones simétricas, $\psi_s$,
 y antisimétricas, $\psi_a$,
 \begin{align}
-    \psi_s(\mathbf{r}_1, \mathbf{r}_2) &=  \psi_\alpha(\mathbf{r}_1) \psi_\beta(\mathbf{r}_2) +  \psi_\alpha(\mathbf{r}_2) \psi_\beta(\mathbf{r}_1)\\
-    \psi_a(\mathbf{r}_1, \mathbf{r}_2) &=  \psi_\alpha(\mathbf{r}_1) \psi_\beta(\mathbf{r}_2) -  \psi_\alpha(\mathbf{r}_2) \psi_\beta(\mathbf{r}_1)
+    \psi_s(\mathbf{r}_1, \mathbf{r}_2) &= \frac{1}{2^{1/2}} \psi_\alpha(\mathbf{r}_1) \psi_\beta(\mathbf{r}_2) +  \psi_\alpha(\mathbf{r}_2) \psi_\beta(\mathbf{r}_1)\\
+    \psi_a(\mathbf{r}_1, \mathbf{r}_2) &=\frac{1}{2^{1/2}}  \psi_\alpha(\mathbf{r}_1) \psi_\beta(\mathbf{r}_2) -  \psi_\alpha(\mathbf{r}_2) \psi_\beta(\mathbf{r}_1)
 \end{align}
 La función de onda antisimétrica se puede escribir también en forma
-de los denominados \textbf{determinante de Slater} (introducidos por
+del denominado \textbf{determinante de Slater} (introducidos por
 J. C. Slater en 1929)
 \begin{equation}
-    \psi_a(\mathbf{r}_1,\mathbf{r}_2) = 
+    \psi_a(\mathbf{r}_1,\mathbf{r}_2) = \frac{1}{2^{1/2}}
     \begin{vmatrix} 
     \psi_\alpha(\mathbf{r}_1) & \psi_\beta(\mathbf{r}_1)   \\
     \psi_\alpha(\mathbf{r}_2) & \psi_\beta(\mathbf{r}_2)  \\
@@ -198,7 +200,7 @@ estado total del sistema $\psi$, sino también de los estados unipartícula
 (spin-orbitales). Es decir, podemos decir que una partícula se encuentra 
 en el estado $\psi_\alpha$ y otra en $\psi_\beta$, (pero no podemos 
 especificar cual de las $N$ partículas es la que ocupa cada estado).
-En el caso se partículas interaccionantes, no podemos estrictamente hablar
+En el caso de partículas interaccionantes, no podemos estrictamente hablar
 de estados unipartícula, porque
 \begin{equation}
     \psi_a(\mathbf{r}_1,\mathbf{r}_2, ..., \mathbf{r}_N) \neq \psi_\alpha(\mathbf{r}_1)\psi_\beta(\mathbf{r}_2)...\psi_\omega(\mathbf{r}_N)
