@@ -1,0 +1,77 @@
+\documentclass[a4paper, 11pt]{article}
+\usepackage[spanish, es-tabla]{babel}
+
+%% Language and font encodings
+%\usepackage[english]{babel}
+\usepackage[utf8x]{inputenc}
+\usepackage[T1]{fontenc}
+
+%% Sets page size and margins
+\usepackage[a4paper,top=3cm,bottom=2cm,left=3cm,right=3cm,marginparwidth=1.75cm]{geometry}
+
+%% Useful packages
+\usepackage{amsmath}
+\usepackage{mathptmx}% http://ctan.org/pkg/mathptmx
+\usepackage[osf,sc]{mathpazo}
+\usepackage[scaled=1]{helvet}
+
+\usepackage{graphicx}
+%\usepackage[colorinlistoftodos]{todonotes}
+%\usepackage[colorlinks=true, allcolors=blue]{hyperref}
+
+\renewcommand{\sfdefault}{phv}
+\usepackage[margin=0pt,font={sf,scriptsize},labelfont=bf]{caption}
+\usepackage{sansmath}
+\usepackage{float} % to easily modify floats
+\usepackage{etoolbox} % nice command patching
+\usepackage{everyhook} % nice \every... patching
+\restylefloat{figure}
+\floatevery{figure}{\PushPreHook{math}{\sansmath}}
+% undo the change to \everymath at the end of the figure (etoolbox)
+\apptocmd{\endfigure}{\PopPreHook{math}}{}{}%\usepackage{helvet}
+\usepackage{sectsty}
+\allsectionsfont{\sffamily}
+
+
+\title{\huge\textsf{\textbf{Qu\'imica Física II}\\
+\Large \textit{Problemas de Estructura Atómica y Molecular}}}
+%\author{\sf David De Sancho Sánchez}
+\date{}
+\begin{document}
+\maketitle
+\large
+\begin{enumerate}
+    \item Calcula la probabilidad de que un electrón descrito por la
+    función de onda 1s del átomo de hidrógeno se encuentre a una distancia del 
+    núcleo igual o inferior al primer radio de Bohr.
+    
+    \item Calcula el radio más probable al que se encontrará un
+    electrón cuando ocupe un orbital 1s de un átomo 
+    hidrogenoide con número atómico Z.
+    
+    \item Calcula la posición exacta de los nodos de las funciones
+    radiales de los orbitales 1s, 2s, 2p y 3s del átomo de hidrógeno.
+    
+    \item Una partícula se encuentra sometida al siguiente potencial
+    \begin{equation*}
+\hat{V}(x)=
+\begin{cases}
+  \infty & \text{ si } L<x<0\\
+  0  & \text{ si } 0\leq x\leq \frac{L}{4}\text{  o  }\frac{3L}{4}\leq x\leq L
+\\
+  V_0, & \text{si } \frac{L}{4}<x<\frac{3L}{4}
+\end{cases}
+\end{equation*}
+    donde $V_0$ es una constante pequeña. Usa la teoría de perturbaciones
+    para calcular las correcciones de primer orden de la energía, utilizando
+    como hamiltoniano de orden cero el correspondiente a la partícula en 
+    una caja.
+    
+    \item Calcula la corrección de primer orden a la energía del 
+    estado fundamental de un oscilador armónico cuya energía potencial 
+    es 
+    \begin{equation*}
+        V(x)=\frac{1}{2}kx^2 + \frac{1}{6}\gamma x^3  + \frac{1}{24}bx^4
+    \end{equation*}
+\end{enumerate}
+\end{document}

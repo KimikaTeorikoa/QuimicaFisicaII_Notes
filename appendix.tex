@@ -1,23 +1,86 @@
 \chapter{Apéndice: Conceptos Matemáticos y de la Física Clásica
 Importantes en Mecánica Cuántica}
+
+\section{Números complejos}
+En nuestro estudio de la Mecánica Cuántica, muy a menudo nos
+encontramos con números complejos, que incluyen el número imaginario
+$\mathrm{i}=\sqrt{-1}$. En general, podemos escribir un número complejo
+como la suma de su parte real y su parte imaginaria
+\begin{equation}
+    z= x+y\mathrm{i} 
+    \label{eq:complex}
+\end{equation}
+donde
+\begin{align}
+    x=&\mathrm{Re}(z) \\
+    y=&\mathrm{Im}(z) 
+\end{align}
+Las operaciones con números complejos son sencillas en el caso
+de la suma o la resta, dado que los términos real e imaginario 
+operan por separado. En el caso de la multiplicación, tenemos
+que considerar cada binomio independientemente. Por ejemplo,
+\begin{equation}
+\begin{split}
+    (2-\mathrm{i})(-3+2\mathrm{i}) = &
+    -6 + 3\mathrm{i}+ 4\mathrm{i}- 2\mathrm{i}^2=\\
+    &-4 + 7 \mathrm{i}
+\end{split}
+\end{equation}
+Nótese que aquí estamos haciendo uso de $\mathrm{i}^2=-1$. Para
+dividir números complejos, es conveniente definir el complejo
+conjugado. Para el caso del número complejo $z$, definido en la
+Ecuación \ref{eq:complex}, el complejo conjugado $z^\star$ es
+\begin{equation}
+    z^\star= x-y\mathrm{i} 
+\end{equation}
+donde hemos cambiado el signo de la parte imaginaria. Un número 
+complejo multiplicado por su conjugado es siempre un número real
+\begin{equation}
+    zz^\star= (x+y\mathrm{i})(x-y\mathrm{i})= x^2+y^2
+\end{equation}
+Finalmente, para calcular el cociente de dos números imaginarios, 
+por ejemplo
+\begin{equation}
+    z=\frac{2+\mathrm{i}}{1+2\mathrm{i}}
+\end{equation}
+podemos multiplicar y dividir por el complejo conjugado del
+denominador
+\begin{equation}
+    z=\frac{2+\mathrm{i}}{1+2\mathrm{i}}\bigg(\frac{1-2\mathrm{i}}{1-2\mathrm{i}}\bigg)=\frac{4-3\mathrm{i}}{5}=\frac{4}{5}-\frac{3}{5}\mathrm{i}
+\end{equation}
+
+A menudo representamos los números complejos en un sistema de coordenadas
+bidimensional, donde en el eje de abscisas representamos la parte 
+real ($\mathrm{Re}(z$)) y en el eje de ordenadas representamos la 
+parte imaginaria ($\mathrm{Im}(z$)). Si dibujamos el número complejo 
+en este sistema de coordenadas, se ubicará en el punto $z=(x,y)$.
+El vector que une el origen con este punto es el vector $\mathbf{r}$ 
+cuyo módulo es $r=(x^2 + y^2)^{1/2}$. Este vector forma
+un ángulo $\theta$.
+
 \section{La Relación de Euler}
-A menudo encontraremos en nuestras funciones de onda, términos
-exponenciales imaginarios, como $\mathrm{e}^{\mathrm{i}\theta}$.
-La relación de Euler (1707-1783), a la que Feynmann llamó "la
-fórmula más sobresaliente de las matemáticas" permite expresar
-este tipo de exponenciales a partir de funciones trigonométricas:
+Un número complejo se puede expresar siempre en relación al módulo
+$r$ y el ángulo $\theta$ usando la fórmula de Euler,  
+a la que Feynmann llamó "la fórmula más sobresaliente de las
+matemáticas"
 \begin{equation}
     \mathrm{e}^{\mathrm{i}\theta} = \cos{\theta} + \mathrm{i}\sin{\theta}
 \end{equation}
-Asímismo, para cualquier número imaginario $z=x + \mathrm{i}y$,
-podemos escribir
+Para cualquier número imaginario podemos escribir
 \begin{equation}
-    z=x + \mathrm{i}y = r(\cos{\theta} + \mathrm{i}\sin{\theta})=
-    \mathrm{e}^{\mathrm{i}\theta}
+    z = x + y\mathrm{i} = r(\cos{\theta} + \mathrm{i}\sin{\theta})=
+    r\mathrm{e}^{\mathrm{i}\theta}
 \end{equation}
-donde $\theta$ es el ángulo formado por la contribución 
-real, $\mathrm{Re}(z)$, y la contribución imaginaria, 
-$\mathrm{Im}(z)$, de $z$.
+Si recordamos nuestra definición del producto entre un número 
+complejo y su conjugado, vemos naturalmente cómo se cancela la
+parte imaginaria
+\begin{equation}
+    zz^\star=r\mathrm{e}^{\mathrm{i}\theta}(r\mathrm{e}^{-\mathrm{i}\theta})= r^2
+\end{equation}
+A menudo encontraremos en nuestras funciones de onda, términos
+exponenciales imaginarios, como $\mathrm{e}^{\mathrm{i}\theta}$.
+
+
 
 
 

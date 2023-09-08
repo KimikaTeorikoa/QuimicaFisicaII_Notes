@@ -255,35 +255,42 @@
 En esta primera práctica vamos a estudiar el espectro de rotación-vibración
 de las moléculas presentes en el aire que respiramos. Para ello usaremos
 espectroscopía en el infrarrojo, que permite estudiar la interacción de la
-materia con la radiación infrarroja ($\lambda=0.7$ $\mu$m$-1$ mm) y así 
-obtener espectros vibracionales con estructura fina rotacional. 
+materia con la \textbf{radiación infrarroja} ($\lambda=0.7$ $\mu$m$-1$ mm) 
+y así obtener espectros vibracionales con estructura fina rotacional. 
 
-Los enlaces de las moléculas no son rígidos, sino que se comportan como 
-muelles, que pueden extenderse y contraerse. Matemáticamente, estas 
-vibraciones se pueden expresar en términos de unos modos normales. En el 
+Los enlaces de las moléculas no son rígidos, sino que se comportan,
+en una primera aproximación, como muelles, que pueden extenderse y contraerse.
+Matemáticamente, estas vibraciones se pueden expresar en términos de unos
+\textbf{modos normales}, que aparecen asociados a \textbf{frecuencias} ($\nu$)
+o \textbf{números de onda} ($\tilde{\nu}=\nu/c=1/\lambda$) característicos. 
+En el 
 caso de las moléculas lineales, el número de modos normales de vibración 
-es $3N-5$ mientras que para moléculas no lineales hay $3N-6$ modos normales.
-Algunos enlaces son más activos que otros en el infrarrojo. En general, 
-cuanto mayor es la polaridad de un enlace, mayor es su absorción en esta
-región del espectro. Algunas vibraciones son completamente inactivas; 
-es el caso de aquellas vibraciones que resultan en un movimiento que no
-cambia el momento dipolar de la molécula. 
+es $3N-5$, mientras que para moléculas no lineales hay $3N-6$ modos normales.
+Para que un modo vibracional de una molécula sea activo en el infrarrojo, 
+su vibración debe resultar en un cambio de su \textbf{momento dipolar}.
+Algunas vibraciones son completamente inactivas; es el caso de aquellas
+vibraciones que resultan en un movimiento que no cambia el momento dipolar
+de la molécula. Algunos enlaces son más activos que otros en el infrarrojo. 
+En general, cuanto mayor es la polaridad de un enlace, mayor es su 
+absorción en esta región del espectro. 
 
-Como hemos dicho, nosotros nos centraremos en una muestra de aire. Aunque 
-las moléculas que se encuentran en el aire en mayor concentración son 
-el nitrógeno (N$_2$) y el oxígeno (O$_2$), estas moléculas no son activas 
+Como hemos dicho, en esta práctica nos centraremos en una muestra de aire.
+Aunque  las moléculas que se encuentran en el aire en mayor concentración 
+son el nitrógeno (N$_2$) y el oxígeno (O$_2$), estas moléculas no son activas 
 en el infrarrojo. Al tratarse de moléculas diatómicas lineales ($N=2$), 
 tienen un solo modo de vibración, el estiramiento del enlace, y este 
 estiramiento no cambia el momento dipolar. Otras moléculas que están 
 presentes en el aire sí son activas en el infrarrojo. Es el caso de las 
 moléculas de monóxido de carbono (CO) y de dióxido de carbono (CO$_2$).
-En el caso del CO también hay un solo modo de vibración, correspondiente 
-al estiramiento del enlace, que aparece a $2143$ cm$^{-1}$ en el espectro 
-de vibración. El CO$_2$, en cambio, tiene cuatro modos normales de vibración, 
-uno inactivo y tres activos en el infrarrojo. El modo inactivo es el 
-estiramiento simétrico, que no resulta en un cambio en el momento dipolar.
-Los modos activos son el estiramiento asimétrico, que aparece a 2349 cm$^{-1}$,
-y la flexión, que es un modo degenerado y aparece a 667 cm$^{-1}$.
+En el caso del CO, al ser lineal, también hay un solo modo de vibración,
+correspondiente al estiramiento del enlace, que aparece asociado a un 
+número de onda $\tilde{\nu}=2143$ cm$^{-1}$
+en el espectro de vibración. El CO$_2$, en cambio, tiene cuatro modos 
+normales de vibración, uno inactivo y tres activos. El modo inactivo es el 
+\textbf{estiramiento simétrico}, que no resulta en un cambio en el momento
+dipolar. Los modos activos son el \textbf{estiramiento asimétrico}, que
+aparece a 2349 cm$^{-1}$, y la \textbf{flexión}, que es un modo degenerado y
+aparece a 667 cm$^{-1}$.
 
 \subsection{Modelos teóricos para las transiciones vibracionales}
 Para el estudio de las transiciones que podemos observar en el infrarrojo
@@ -295,18 +302,23 @@ número cuántico $v$,
 \begin{equation}
     E_v=\bigg(v+\frac{1}{2}\bigg)h\nu
 \end{equation}
-donde $v=0,1,2...$. La energía vibracional se puede expresar en ``números
-de onda'', y la ecuación resultante es
+donde $v=0,1,2...$. 
+Dividiendo por $hc$, la energía vibracional se puede expresar en 
+\textbf{números de onda}, que expresamos como $\tilde{\nu}$ o
+$\tilde{\omega}_e$ y tienen unidades de cm$^{-1}$. La ecuación 
+resultante es
 \begin{equation}
-    G_v=\bigg(v+\frac{1}{2}\bigg)\tilde{\nu},
+%    G_v=\bigg(v+\frac{1}{2}\bigg)\tilde{\nu}
+    G_v=\bigg(v+\frac{1}{2}\bigg)\tilde{\omega}_e
 \end{equation}
-donde estamos usando la frecuencia en números de onda,
+La frecuencia (o el número de onda) está relacionado con parámetros
+fundamentales de la molécula
 \begin{equation}
-    \tilde{\nu}=\frac{1}{2\pi c}\Big(\frac{k}{\mu}\Big),
+    \tilde{\nu}=\frac{1}{2\pi c}\Big(\frac{k}{\mu}\Big)^{1/2},
     \label{eq:nu}
 \end{equation}
-$k$ es la constante de fuerza del enlace y $\mu$ es la masa reducida,
-que en el caso de una molécula diatómica es 
+donde $k$ es la constante de fuerza del enlace y $\mu$ es la masa 
+reducida, que en el caso de una molécula diatómica es 
 \begin{equation}
     \mu=\frac{m_1m_2}{m_1+m_2}.
 \end{equation}
@@ -316,13 +328,13 @@ y $-1$ del proceso de emisión. La energía correspondiente a
 estas transiciones es por tanto siempre la misma, 
 \begin{equation}
     \Delta G=G(v+1)-G(v) = \bigg(v+1+\frac{1}{2}\bigg)\tilde{\nu} -
-     \bigg(v+\frac{1}{2}\bigg)\tilde{\nu} = \tilde{\nu}.
+     \bigg(v+\frac{1}{2}\bigg)\tilde{\nu} = \tilde{\nu}
 \end{equation}
 Dada la energía disponible a condiciones de temperatura 
 ambiente, $k_BT/hc=200$ cm$^{-1}$ , la mayor parte de las 
 moléculas están en sus estados fundamentales de acuerdo con
 la distribución de Boltzmann. Por tanto, al irradiar una 
-muestra típicamente observamos la transición fundamental, 
+muestra típicamente observamos la \textbf{transición fundamental}, 
 ($v=0\rightarrow v=1$).
 
 La validez del modelo del oscilador armónico es sólo aproximada.
@@ -331,7 +343,7 @@ potencial es considerable y por ello hay que incluir correcciones
 de anarmonicidad. Así, el nivel energético correspondiente al 
 número cuántico $v$ es
 \begin{equation}
-    G(v) = \bigg(v+\frac{1}{2}\bigg)\tilde{\nu} - \bigg(v+\frac{1}{2}\bigg)^2x_e\tilde{\nu}.
+    G(v) = \bigg(v+\frac{1}{2}\bigg)\tilde{\omega}_e - \bigg(v+\frac{1}{2}\bigg)^2x_e\tilde{\omega}_e.
 \end{equation}
 En esta expresión hemos definido la \textbf{constante de anarmonicidad}, 
 $x_e=\tilde{\nu}/4D_e$, donde $D_e$ es la profundidad del potencial
@@ -355,12 +367,14 @@ $J$,
     E_J=\frac{h^2}{8\pi^2I}J(J+1),
 \end{equation}
 donde $I$ es el momento de inercia y $J$ puede adoptar los valores 
-$J=0,1,2...$. Podemos expresar la energía rotacional en números de onda,
+$J=0,1,2...$. Como hemos hecho en el caso de los niveles energéticos
+vibracionales, podemos expresar la energía rotacional en números de 
+onda,
 \begin{equation}
     F=BJ(J+1)
     \label{eq:F}
 \end{equation}
-donde estamos definiendo la constante rotacional $B$.Este
+donde estamos definiendo la constante rotacional $B$. Este
 tipo de transiciones aparecen en el espectro de microondas y su
 regla de selección es $\Delta J=\pm 1$. La energía correspondiente 
 a estas transiciones es
@@ -371,9 +385,10 @@ a estas transiciones es
 
 La aproximación del rotor rígido no es exacta, y por tanto es necesario
 introducir correcciones debidas al movimiento centrífugo de las moléculas.
-Estas distorsiones en los niveles energéticos dependen de la frecuencia
-vibracional, pues son mayores cuando el enlace es más elástico. La corrección
-empírica para la energía resulta en la siguiente expresión
+Esta \textbf{distorsión centrífuga} en los niveles energéticos depende 
+de la frecuencia vibracional, pues son mayores cuando el enlace es más 
+elástico. La corrección empírica para la energía resulta en la siguiente
+expresión
 \begin{equation}
     F(J)=BJ(J+1) - D_JJ^2(J+1)^2,
 \end{equation}
@@ -388,12 +403,12 @@ Si consideramos este efecto en la energía de la transición, obtenemos
 \end{align}
 
 \subsection{El espectro roto-vibracional}
-En un espectro roto-vibracional como los que estudiaremos en
-esta práctica usando espectroscopía infrarroja, observamos 
+En un \textbf{espectro roto-vibracional} como los que estudiaremos 
+en esta práctica usando espectroscopía infrarroja, observamos 
 principalmente la transición vibracional fundamental, 
 $v=0\rightarrow v=1$. En este espectro aparecen además 
-transiciones rotacionales en forma de estructura fina. De
-tal manera que las bandas que observamos corresponden 
+transiciones rotacionales en forma de \textbf{estructura fina}. 
+De tal manera que las bandas que observamos corresponden
 a transiciones entre niveles energéticos 
 \begin{equation}
     s(v, J) = G(v) + F(J) = \Big(v+\frac{1}{2}\Big)\tilde{\nu} + BJ(J+1)
@@ -450,7 +465,7 @@ frecuencias, obtenemos
 \begin{align}
 \begin{split}
     \tilde{\nu}_R(J) - \tilde{\nu}_P(J)&=
-    (B_1+B_0)(J+1) - (B_1-B_0)(J+1)^2 - \\
+    (B_1+B_0)(J+1) + (B_1-B_0)(J+1)^2 - \\
     &- (B_1-B_0)J^2 + (B_1 + B_0)J =4B_1\big(J+\frac{1}{2}\big)
 \end{split}
 \end{align}
@@ -473,7 +488,7 @@ de la representación de $(J+1/2)$ frente a $\tilde{\nu}_R(J-1) -
 \section{Obtención de parámetros a partir de los espectros}
 Una vez obtenidos los valores de las constantes
 vibracionales $B_0$ y $B_1$ podemos estimar el origen de banda,
-es decir, el valor de $\tilde{nu}$, dado que a partir de la 
+es decir, el valor de $\tilde{\nu}$, dado que a partir de la 
 Ecuación \ref{eq:nuP}, podemos escribir que
 \begin{equation}
     \tilde{\nu} = \tilde{\nu}_P(1) + 2B_0 
@@ -483,7 +498,7 @@ y a partir de la Ecuación \ref{eq:nuR},
     \tilde{\nu} = \tilde{\nu}_R(0) - 2B_1 
 \end{equation}
 Usando el valor bibliográfico correspondiente al primer sobretono,
-$\tilde{nu}(0\rightarrow 2)$, podemos calcular la constante de 
+$\tilde{\nu}(0\rightarrow 2)$, podemos calcular la constante de 
 distorsión centrífuga. Para ello planteamos el siguiente
 sistema de ecuaciones
 \begin{align}
@@ -503,13 +518,19 @@ distancia de enlace. Finalmente, podemos obtener la
 constante de dispersión centrífuga a partir de su definición
 en la Ecuación \ref{eq:centrif}.
 
+En el caso del monóxido de carbono, para el nivel $v=0$ nos
+encontramos que sólo están poblados los $J$
+pares mientras que en el caso de $v=1$, sólo están poblados los
+$J$ impares. Por este motivo va a haber una serie de bandas no
+visibles, correspondientes a las bandas $R_1$ y $P_1$.
+
 \chapter[UV-visible]{Espectroscopía Ultravioleta-Visible}
 En la segunda práctica utilizaremos otro tipo de espectroscopía,
 la que usa radiación ultravioleta-visible. Este tipo de radiación,
 de menor longitud de onda y por tanto más energética que la 
 infrarroja, afecta a los niveles electrónicos de las moléculas.
 Lamentablemente, en este caso no podemos obtener expresiones
-analíticas compactas correspondientes a las energías 
+analíticas compactas para las energías 
 correspondientes a las transiciones. 
 
 \begin{table}[b!]
@@ -567,6 +588,16 @@ antienlazante (transición $n\rightarrow\pi^\star$). Estas
 transiciones en realidad están prohibidas por simetría y por
 tanto suelen ser bastante débiles.
 
+En esta práctica partimos de la longitud de onda de absorción
+del acetaldehido y una serie de compuestos en ciclohexano. 
+Para una serie de compuestos carbonílicos, 
+diferentes tipos de sustituyentes modificarán por efecto 
+inductivo o por efecto de resonancia la longitud de onda
+de absorción del enlace. Asimismo, mediremos la absorción
+de la acetona en diferentes disolventes, que pueden formar 
+en distinto grado enlaces de hidrógeno que estabilizan los 
+electrones 
+$n$.
 %\begin{thebibliography}{}
 %\bibitem{atkins_depaula} Atkins, P and De Paula, J. 2006. ``Physical Chemistry, 8th Edition''. Oxford University Press.
 %

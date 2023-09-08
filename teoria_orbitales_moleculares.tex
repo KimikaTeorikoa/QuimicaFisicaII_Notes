@@ -1,0 +1,289 @@
+% ****** Start of file apssamp.tex ******
+%
+%   This file is part of the APS files in the REVTeX 4.1 distribution.
+%   Version 4.1r of REVTeX, August 2010
+%
+%   Copyright (c) 2009, 2010 The American Physical Society.
+%
+%   See the REVTeX 4 README file for restrictions and more information.
+%
+% TeX'ing this file requires that you have AMS-LaTeX 2.0 installed
+% as well as the rest of the prerequisites for REVTeX 4.1
+%
+% See the REVTeX 4 README file
+% It also requires running BibTeX. The commands are as follows:
+%
+%  1)  latex apssamp.tex
+%  2)  bibtex apssamp
+%  3)  latex apssamp.tex
+%  4)  latex apssamp.tex
+%
+\documentclass[notitlepage, amsmath,amssymb,
+ aps,12pt,tightenlines]{revtex4-1}
+%\documentclass[%
+% reprint,
+%superscriptaddress,
+%groupedaddress,
+%unsortedaddress,
+%runinaddress,
+%frontmatterverbose, 
+%preprint,
+%showpacs,preprintnumbers,
+%nofootinbib,
+%nobibnotes,
+%bibnotes,
+ %amsmath,amssymb,
+ %aps,
+%pra,
+%prb,
+%rmp,
+%prstab,
+%prstper,
+%floatfix,
+%]{revtex4-1}
+\usepackage[spanish, es-tabla]{babel}
+\usepackage[utf8x]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{txfonts}
+\usepackage{palatino}
+\usepackage{graphicx}% Include figure files
+\usepackage{dcolumn}% Align table columns on decimal point
+\usepackage{xcolor}
+\usepackage{bm}% bold math
+%\usepackage{hyperref}% add hypertext capabilities
+%\usepackage[mathlines]{lineno}% Enable numbering of text and display math
+%\linenumbers\relax % Commence numbering lines
+
+%\usepackage[showframe,%Uncomment any one of the following lines to test 
+%%scale=0.7, marginratio={1:1, 2:3}, ignoreall,% default settings
+%%text={7in,10in},centering,
+%%margin=1.5in,
+%%total={6.5in,8.75in}, top=1.2in, left=0.9in, includefoot,
+%%height=10in,a5paper,hmargin={3cm,0.8in},
+%]{geometry}
+
+\begin{document}
+
+\title{Desarrollo matemático de las soluciones del ion H$_2^+$ 
+en la teoría de orbitales moleculares}% Force line breaks with \\
+
+\author{David De Sancho}
+ \email{david.desancho@ehu.eus}
+ \affiliation{Departamento de Polímeros y Materiales Avanzados:
+ Física, Química y Tecnología\\
+ Universidad del País Vasco\\
+ Donostia - San Sebasti\'an}
+
+%\date{\today}% It is always \today, today,
+             %  but any date may be explicitly specified
+\maketitle
+
+\subsection*{Introducción}
+El problema que tenemos entre manos es identificar las soluciones
+de la ecuación de Schrödinger para el ion H$_2^+$. Las variables 
+relevantes para este problema son las coordenadas $r_A$ y $r_B$,
+correspondientes a las distancias entre el (único) electrón y
+los núcleos A y B. Recordemos, asimismo, que la distancia entre los
+núcleos $R$ permanece constante. Esto es consecuencia de 
+la aproximación de
+Born-Oppenheimer, por la que asumimos que los núcleos 
+permanecen fijos en la escala de tiempo en que se produce
+el movimiento de los electrones. $R$
+es por tanto un parámetro y para diferentes valores de este parámetro
+obtendremos diferentes valores propios para las funciones propias
+del hamiltoniano.
+
+\subsection*{Hamiltoniano}
+Como en casos anteriores, escribimos el Hamiltoniano usando los 
+términos de energía cinética y potencial correspondientes
+\begin{equation}
+    \hat{H}=-\frac{\hbar^2}{2m_e}\nabla^2 -
+    \frac{e^2}{4\pi \varepsilon_0r_A} - 
+    \frac{e^2}{4\pi \varepsilon_0r_B} +
+    \frac{e^2}{4\pi \varepsilon_0R} 
+\end{equation}
+En el lado derecho de la igualdad en esta expresión, el primer término
+corresponde a la energía cinética del electrón; el segundo y tercero,
+a las interacciones del electrón con los núcleos A y B, respectivamente;
+y el cuarto, a la repulsión entre los dos núcleos, que será una
+constante para cada valor del parámetro $R$ (claramente, este último
+término será mayor cuando la distancia entre los núcleos sea más
+corta). Por conveniencia matemática, utilizaremos unidades atómicas
+para simplificar el hamiltoniano, resultando en la siguiente expresión
+\begin{equation}
+    \hat{H}=-\frac{1}{2}\nabla^2 -
+    \frac{1}{r_A} - 
+    \frac{1}{r_B} +
+    \frac{1}{R} 
+\end{equation}
+Como de costumbre, este hamiltoniano tendrá una serie de soluciones, sus
+funciones propias, cuyos autovalores serán las energías 
+\begin{equation}
+     \hat{H}\Psi_j(r_A, r_B; R) = E_j\Psi_j(r_A, r_B; R) 
+     \label{eq:schrodinger}
+\end{equation}
+
+\subsection*{Combinación lineal de orbitales atómicos}
+Para resolver este problema de valores propios, usamos la teoría 
+de orbitales moleculares. En esta teoría, las soluciones se 
+construyen como combinaciones lineales de orbitales atómicos.
+En el caso del ion molecular H$_2^+$ usamos las soluciones 
+correspondientes a los orbitales atómicos $1\mathrm{s}$.
+Así, en general, usamos como función de prueba las siguientes
+soluciones
+\begin{equation}
+    \Psi_\pm=c_11\mathrm{s_A} \pm c_21\mathrm{s_B}
+    \label{eq:lcao}
+\end{equation}
+donde $c_1$ y $c_2$ son los coeficientes de los orbitales 
+atómicos, que en este casos son iguales. En lo que resta, 
+nos centraremos exclusivamente en la solución $\Psi_+$.
+
+\subsection*{Cálculo de la energía}
+Si multiplicamos ambos lados de la Ecuación 
+\ref{eq:schrodinger} por $\Psi_+^\star$, integramos,
+y reorganizamos términos podemos obtener la expresión 
+para la energía
+\begin{equation}
+    E_+=\frac{\int d\mathbf{r}\Psi_+^\star\hat{H}\Psi_+}{\int d\mathbf{r}\Psi_+^\star\Psi_+}
+    \label{eq:exp}
+\end{equation}
+
+Podemos resolver en primer lugar la integral correspondiente
+al denominador de la Ecuación \ref{eq:exp}. Así, sustituyendo
+la combinación lineal positiva de la expresión \ref{eq:lcao} 
+con los coeficientes
+\begin{equation}
+\begin{split}
+    \int d\mathbf{r}\Psi_+^\star\Psi_+ = &
+    \int d\mathbf{r}(1\mathrm{s^\star_A}+1\mathrm{s^\star_B})(1\mathrm{s_A} +\mathrm{s_B})\\
+    =& \color{red}{\int d\mathbf{r}1\mathrm{s^\star_A}1\mathrm{s_A}+
+    \int d\mathbf{r}1\mathrm{s^\star_B}1\mathrm{s_B}}+
+    {\color{blue}\int d\mathbf{r}1\mathrm{s^\star_A}1\mathrm{s_B}+
+    \int d\mathbf{r}1\mathrm{s^\star_B}1\mathrm{s_A}}
+    \label{eq:denom}
+\end{split}
+\end{equation}
+Los dos primeros términos en el lado derecho de esta
+expresión, mostrados en color rojo, corresponden a la
+integración de la densidad  de probabilidad para los
+orbitales atómicos $1\mathrm{s}$ centrados en las
+posiciones de los núcleos A y B. Su valor, 
+al estar estas funciones normalizadas, es 
+$\int d\mathbf{r}1\mathrm{s^\star_A}1\mathrm{s_A}=\int d\mathbf{r}1\mathrm{s^\star_B}1\mathrm{s_B}=1$. 
+Los otros dos términos, mostrados en azul, son lo que
+denominamos la integral de solapamiento,
+\begin{equation}
+S(R) = \int d\mathbf{r}1\mathrm{s^\star_A}1\mathrm{s_B}=
+    \int d\mathbf{r}1\mathrm{s^\star_B}1\mathrm{s_A}
+\label{eq:overlap}
+\end{equation}
+El valor de esta integral depende de la distancia $R$
+entre los núcleos, dado que el solapamiento definido por 
+el producto entre las funciones atómicas será 0 si los núcleos
+están separados entre sí y será 1 en caso de que los núcleos
+estén superpuestos. Por tanto, así obtenemos el valor de 
+la Ecuación \ref{eq:denom}
+\begin{equation}
+    \int d\mathbf{r}\Psi_+^\star\Psi_+ = 2 + 2S = 2(1+S)
+\end{equation}
+
+Claramente, el numerador es mucho más complicado, al tener que
+aplicar sobre la función del orbital molecular todos los términos
+del hamiltoniano:
+\begin{equation}
+    \begin{split}
+        \int d\mathbf{r}\Psi_+^\star\hat{H}\Psi_+=&
+       \int d\mathbf{r}(1\mathrm{s^\star_A}+1\mathrm{s^\star_B})\bigg( -\frac{1}{2}\nabla^2 -
+    \frac{1}{r_A} - 
+    \frac{1}{r_B} +
+    \frac{1}{R}\bigg)(1\mathrm{s_A}+1\mathrm{s_B}) = \\
+    & \int d\mathbf{r}(1\mathrm{s^\star_A}+1\mathrm{s^\star_B})\bigg( -\frac{1}{2}\nabla^2 -
+    \frac{1}{r_A} - 
+    \frac{1}{r_B} +
+    \frac{1}{R}\bigg)1\mathrm{s_A} + \\
+    & \int d\mathbf{r}(1\mathrm{s^\star_A}+1\mathrm{s^\star_B})\bigg( -\frac{1}{2}\nabla^2 -
+    \frac{1}{r_A} - 
+    \frac{1}{r_B} +
+    \frac{1}{R}\bigg)1\mathrm{s_B}
+    \end{split}
+    \label{eq:num}
+\end{equation}
+Si desarrollamos esta ecuación veremos que en ella encontramos
+las soluciones para el hamiltoniano electrónico del hidrógeno
+\begin{align}
+    \bigg( -\frac{1}{2}\nabla^2 - \frac{1}{r_A}\bigg)1\mathrm{s_A}=E_\mathrm{1s}1\mathrm{s_A}\\
+    \bigg( -\frac{1}{2}\nabla^2 - \frac{1}{r_B}\bigg)1\mathrm{s_B}=E_\mathrm{1s}1\mathrm{s_B}
+\end{align}
+Podemos sustituir estas expresiones en la Ecuación 
+\ref{eq:num}, con lo cual obtenemos 
+\begin{equation}
+\begin{split}
+    \int d\mathbf{r}\Psi_+^\star\hat{H}\Psi_+=
+     & \int d\mathbf{r}
+     (1\mathrm{s^\star_A} + 1\mathrm{s^\star_B})
+     \bigg( E_\mathrm{1s} - \frac{1}{r_B} +\frac{1}{R}\bigg)
+     1\mathrm{s_A} + \\
+     & \int d\mathbf{r}(1\mathrm{s^\star_A}+1\mathrm{s^\star_B})
+     \bigg( E_\mathrm{1s} - \frac{1}{r_A}  +\frac{1}{R}\bigg)
+     1\mathrm{s_B} \\
+     = & 2E_\mathrm{1s}(1 + S) + 
+     \color{red}{\int d\mathbf{r} 1\mathrm{s^\star_A} \bigg(-\frac{1}{r_B}+\frac{1}{R}\bigg) 1\mathrm{s_A}}
+     +
+     \int d\mathbf{r} 1\mathrm{s^\star_B} \bigg(-\frac{1}{r_A}+\frac{1}{R}\bigg) 1\mathrm{s_B}
+     \\
+     + & {\color{blue}\int d\mathbf{r} 1\mathrm{s^\star_B} \bigg(-\frac{1}{r_B}+\frac{1}{R}\bigg) 1\mathrm{s_A} 
+     +  \int d\mathbf{r} 1\mathrm{s^\star_A}   
+     \bigg(-\frac{1}{r_A}+\frac{1}{R}\bigg) 1\mathrm{s_B}}
+\end{split}
+\label{eq:num2}
+\end{equation}
+En esta expresión, tenemos dos términos,
+en rojo, que podemos resolver de manera 
+idéntica por separado. Así, podemos escribir,
+\begin{equation}
+    {\color{red}\int d\mathbf{r} 1\mathrm{s^\star_A} \bigg(-\frac{1}{r_B}+\frac{1}{R}\bigg) 1\mathrm{s_A}} = 
+    -\int d\mathbf{r} 1\mathrm{s^\star_A} \frac{1}{r_B}1\mathrm{s_A}
+    +
+    \int d\mathbf{r} 1\mathrm{s^\star_A} \frac{1}{R}1\mathrm{s_A}= -j+\frac{1}{R}
+\end{equation}
+Aquí estamos definiendo la integral de Coulomb,
+$j$, que representa la interacción
+electrostática entre la densidad en torno 
+al orbital 1$\mathrm{s_A}$ y el núcleo del
+átomo B. 
+Por otro lado, en la Ecuación \ref{eq:num2}
+encontramos otros dos términos análogos pero con índices
+cruzados, que representamos en azul, y resolvemos de la
+siguiente manera
+\begin{equation}
+    {\color{blue}\int d\mathbf{r} 1\mathrm{s^\star_B} \bigg(-\frac{1}{r_B}+\frac{1}{R}\bigg) 1\mathrm{s_A}} = 
+    -\int d\mathbf{r} 1\mathrm{s^\star_B} \frac{1}{r_B}1\mathrm{s_A}
+    +
+    \int d\mathbf{r} 1\mathrm{s^\star_B} \frac{1}{R}1\mathrm{s_A}= -k+\frac{S}{R}
+\end{equation}
+donde estamos definiendo la integral de intercambio, $k$, 
+y usando la integral de solapamiento (Ec. \ref{eq:overlap}).
+Para interpretar la integral de intercambio, que implica
+un efecto puramente mecanocuántico, podemos pensar que 
+representa la interacción entre el exceso de densidad 
+debido al solapamiento de los orbitales atómicos con 
+la carga positiva de los núcleos.
+Dado que en el numerador de la Ecuación \ref{eq:num2}
+ tenemos dos integrales ``rojas'' y dos ``azules'', 
+ el resultado del numerador  es
+\begin{equation}
+    \int d\mathbf{r}\Psi_+^\star\hat{H}\Psi_+=
+2E_\mathrm{1s}(1 + S) + 2\bigg(-j+\frac{1}{R}\bigg) + 2\bigg( -k+\frac{S}{R}\bigg)
+\end{equation}
+
+Finalmente, combinando numerador y denominador obtenemos la
+solución final de la Ecuación \ref{eq:exp},
+\begin{equation}
+    E = \frac{2E_\mathrm{1s}(1 + S) + 2\bigg(-j+\frac{1}{R}\bigg) + 2\bigg( -k+\frac{S}{R}\bigg)}{2 + 2S} = 
+    E_\mathrm{1s} + \frac{1}{R} - \frac{j+k}{1+S}
+\end{equation}
+
+\end{document}
+%
+% ****** End of file apssamp.tex ******

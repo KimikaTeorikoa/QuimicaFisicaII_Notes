@@ -1,0 +1,187 @@
+% ****** Start of file apssamp.tex ******
+%
+%   This file is part of the APS files in the REVTeX 4.1 distribution.
+%   Version 4.1r of REVTeX, August 2010
+%
+%   Copyright (c) 2009, 2010 The American Physical Society.
+%
+%   See the REVTeX 4 README file for restrictions and more information.
+%
+% TeX'ing this file requires that you have AMS-LaTeX 2.0 installed
+% as well as the rest of the prerequisites for REVTeX 4.1
+%
+% See the REVTeX 4 README file
+% It also requires running BibTeX. The commands are as follows:
+%
+%  1)  latex apssamp.tex
+%  2)  bibtex apssamp
+%  3)  latex apssamp.tex
+%  4)  latex apssamp.tex
+%
+\documentclass[notitlepage, amsmath,amssymb,
+ aps,12pt,tightenlines]{revtex4-1}
+%\documentclass[%
+% reprint,
+%superscriptaddress,
+%groupedaddress,
+%unsortedaddress,
+%runinaddress,
+%frontmatterverbose, 
+%preprint,
+%showpacs,preprintnumbers,
+%nofootinbib,
+%nobibnotes,
+%bibnotes,
+ %amsmath,amssymb,
+ %aps,
+%pra,
+%prb,
+%rmp,
+%prstab,
+%prstper,
+%floatfix,
+%]{revtex4-1}
+\usepackage[spanish, es-tabla]{babel}
+\usepackage[utf8x]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{txfonts}
+\usepackage{palatino}
+\usepackage{graphicx}% Include figure files
+\usepackage{dcolumn}% Align table columns on decimal point
+\usepackage{bm}% bold math
+%\usepackage{hyperref}% add hypertext capabilities
+%\usepackage[mathlines]{lineno}% Enable numbering of text and display math
+%\linenumbers\relax % Commence numbering lines
+
+%\usepackage[showframe,%Uncomment any one of the following lines to test 
+%%scale=0.7, marginratio={1:1, 2:3}, ignoreall,% default settings
+%%text={7in,10in},centering,
+%%margin=1.5in,
+%%total={6.5in,8.75in}, top=1.2in, left=0.9in, includefoot,
+%%height=10in,a5paper,hmargin={3cm,0.8in},
+%]{geometry}
+
+\begin{document}
+
+\title{Desarrollo matemático de la función de onda total en presencia de un potencial central}% Force line breaks with \\
+
+\author{David De Sancho}
+ \email{david.desancho@ehu.eus}
+ \affiliation{Departamento de Ciencia y Tecnología de Polímeros\\
+ Universidad del País Vasco\\
+ Donostia - San Sebasti\'an}
+
+%\date{\today}% It is always \today, today,
+             %  but any date may be explicitly specified
+
+\maketitle
+
+\subsection*{Introducción}
+Tras obtener las soluciones de la ecuación de
+Schrödinger para el movimiento rotacional, los
+armónicos esféricos $Y_{l,m_l}(\theta ,\phi)$,
+podemos pasar a resolver el problema
+de la partícula sometida a un potencial
+central. Este problema es todavía más relevante para
+nosotros como químicos, porque es precisamente el 
+problema al que nos enfrentamos cuando estudiamos
+un átomo hidrogenoide. 
+Para resolver este problema, utilizaremos los resultados 
+del movimiento rotacional, pero tendremos que 
+incorporar la dependencia espacial, descrita por
+la función radial $R(r)$.
+
+\subsection*{Hamiltoniano}
+El Hamiltoniano para el movimiento rotacional en presencia
+de un potencial central $V(r)$ es
+\begin{equation}
+    \hat{H}=-\frac{\hbar^2}{2\mu}\nabla^2 +V(r),
+\end{equation}
+done estamos usando la masa reducida, $\mu$, y la laplaciana, 
+$\nabla^2$, correspondiente al término de energía cinética.
+Este operador se puede expresar en coordenadas 
+esféricas  de la siguiente manera
+\begin{equation}
+    %\nabla^2=\frac{\partial^2}{\partial r^2} + 
+    %\frac{2}{r}\frac{\partial}{\partial r} +
+    %\frac{1}{r^2}\Lambda^2
+    \nabla^2=\frac{1}{r^2}\frac{\partial}{\partial r}r^2\frac{\partial}{\partial r} + \frac{1}{r^2}\Lambda^2
+\end{equation}
+En esta ecuación, estamos definiendo a su vez el operador de Legendre,
+que incluye toda la dependencia con los ángulos $\theta$
+y $\phi$, y ya empleamos en nuestro tratamiento del movimiento
+rotacional,
+\begin{equation}
+    \Lambda^2=\frac{1}{\sin^2\theta}\frac{\partial^2}{\partial\phi^2}+
+    \frac{1}{\sin\theta}\frac{\partial}{\partial\theta}\sin\theta\frac{\partial}{\partial\theta}
+\end{equation}
+
+\subsection*{Separación de la función de onda}
+Como hemos hecho en el caso de la función de onda angular
+para sus correspondientes componentes, $\Theta(\theta)$ y
+$\Phi(\phi)$, la función de onda  $\psi(r,\theta,\phi)$ 
+se puede escribir separando la parte radial de la función
+de onda $R(r)$ y la parte angular, $Y_{l,m_l}(\theta, \phi)$
+\begin{equation}
+    \psi(r,\theta,\phi) = R(r) Y_{l,m_l}(\theta, \phi)
+    \label{eq:sep}
+\end{equation}
+
+\subsection*{Desarrollo matemático}
+A continuación, aplicamos el hamiltoniano a la función de onda
+de la Ecuación \ref{eq:sep}. Así, tenemos
+\begin{equation}
+\begin{split}
+    \hat{H}\psi(r,\theta,\phi)=&
+    \bigg\{
+    -\frac{\hbar^2}{2\mu} \frac{1}{r^2}\frac{\partial}{\partial r}r^2\frac{\partial}{\partial r} 
+    -\frac{\hbar^2}{2\mu} \frac{1}{r^2}\Lambda^2
+    +V(r)\bigg\}\psi(r,\theta,\phi)= \\
+    =&
+    \bigg\{
+    -\frac{\hbar^2}{2\mu} \frac{1}{r^2}\frac{\partial}{\partial r}r^2\frac{\partial}{\partial r} 
+    -\frac{\hbar^2}{2\mu} \frac{1}{r^2}\Lambda^2
+    +V(r)\bigg\}R(r) Y_{l,m_l}(\theta, \phi)=\\
+    &=ER(r) Y_{l,m_l}(\theta, \phi)
+\end{split}
+\end{equation}
+Esta expresión se puede reorganizar si sustituimos la función de onda expresada 
+como producto de $R(r)$ y $Y(\theta, \phi)$ y ssacamos de las 
+derivadas los términos que no
+dependen de la variable con la que estamos derivando
+\begin{equation}
+   \begin{split}
+       \hat{H}\psi(r,\theta,\phi)=&\hat{H}R(r) Y_{l,m_l}(\theta, \phi)=\\ 
+       =&-\frac{\hbar^2}{2\mu} \frac{1}{r^2}\frac{\partial}{\partial r}r^2\frac{\partial}{\partial r} R(r) Y_{l,m_l}(\theta, \phi)  
+       -\frac{\hbar^2}{2\mu} \frac{1}{r^2}\Lambda^2R(r) Y_{l,m_l}(\theta, \phi)
+      + V(r)R(r) Y_{l,m_l}(\theta, \phi)
+   \end{split} 
+\end{equation}
+En esta expresión podemos ir resolviendo término a término para ver
+que en todos ellos encontramos la componente $Y_{l,m_l}$
+\begin{equation}
+   \begin{split}
+       \hat{H}\psi(r,\theta,\phi)=&\hat{H}R(r) Y_{l,m_l}(\theta, \phi)=\\ =&\bigg\{-\frac{\hbar^2}{2\mu} \frac{1}{r^2}\frac{\partial}{\partial r}r^2\frac{\partial}{\partial r} R(r) 
+ +  \frac{l(l+1)\hbar^2}{2\mu r^2} R(r) 
+ + V(r)R(r) \bigg\}Y_{l,m_l}(\theta, \phi)=\\
+     &=ER(r) Y_{l,m_l}(\theta, \phi)
+   \end{split}
+   \label{eq:beforelast}
+\end{equation}
+Para llegar a esta expresión hemos usado los resultados que obtuvimos
+en el caso del movimiento rotacional para $\Lambda^2$ y la energía,
+$E=l(l+1)\hbar^2/2I$ (transparencias 6 y 14)
+\begin{equation}
+    \Lambda^2Y_{l,m_l}=-\frac{2IE}{\hbar^2}Y_{l,m_l}= -l(l+1)Y_{l,m_l}
+    \label{eq:rotor}
+\end{equation}
+Si dividimos ambos lados de la Ecuación \ref{eq:beforelast} 
+por $Y_{l,m_l}$, obtenemos la ecuación radial 
+\begin{equation}
+    \bigg\{-\frac{\hbar^2}{2\mu}\frac{1}{r^2}\frac{d}{dr}\bigg(r^2\frac{d}{dr}\bigg) + \frac{l(l+1)\hbar^2}{2\mu r^2} + V(r)\bigg\}R(r)=ER(r)
+\end{equation}
+
+
+\end{document}
+%
+% ****** End of file apssamp.tex ******
